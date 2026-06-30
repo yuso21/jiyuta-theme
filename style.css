@@ -39,50 +39,30 @@ body.public-page {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Container spacing */
-.wrap {
-  max-width: 1240px !important;
-  padding: 0 20px !important;
-}
-
-/* Header & Navigation Modernization */
-#header-container {
-  background-color: #ffffff !important;
-  border-bottom: 1px solid var(--border-color) !important;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02) !important;
-}
-
-.logo-header {
-  padding: 20px 0 !important;
-}
-
-/* Hide standard logo image to force the new text logo style */
+/* Header Branding - Safe Override */
 .site-logo-image {
-  display: none !important;
+  display: none !important; /* Hide image logo if any */
 }
 
 .site-name-text {
-  visibility: hidden !important;
-  position: relative !important;
+  font-size: 0 !important; /* Hide default title text */
   display: inline-block !important;
-  height: 32px;
+  line-height: 1 !important;
 }
 
 .site-name-text::before {
   content: 'AI実験室' !important;
-  visibility: visible !important;
-  position: absolute !important;
-  left: 0 !important;
-  top: 0 !important;
-  white-space: nowrap !important;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  font-size: 1.8rem !important;
   font-weight: 800 !important;
   letter-spacing: -0.5px !important;
   background: var(--primary-gradient) !important;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
+  display: inline-block !important;
+  line-height: 1.2 !important;
 }
 
+/* Navigation Modernization */
 #navi {
   background-color: #ffffff !important;
   border-top: 1px solid var(--border-color) !important;
@@ -119,7 +99,7 @@ body.public-page {
   width: 80% !important;
 }
 
-/* Article Cards Styling */
+/* Entry Cards - Safe Layout skinned with shadows and rounded borders */
 .entry-card-wrap.a-wrap {
   border: none !important;
   border-radius: var(--radius-lg) !important;
@@ -127,83 +107,48 @@ body.public-page {
   background-color: var(--bg-card) !important;
   margin-bottom: 24px !important;
   overflow: hidden !important;
-  transform: translateY(0);
   transition: var(--transition-smooth) !important;
-  display: flex !important;
-  flex-direction: row;
 }
 
 .entry-card-wrap.a-wrap:hover {
-  transform: translateY(-6px);
+  transform: translateY(-4px) !important;
   box-shadow: var(--card-shadow-hover) !important;
-  background-color: var(--bg-card) !important;
 }
 
 .entry-card {
   border: none !important;
-  background: none !important;
-  width: 100% !important;
-  display: flex !important;
-  flex-direction: row !important;
+  background: transparent !important;
+  padding: 16px !important;
   margin: 0 !important;
-  padding: 0 !important;
-}
-
-.entry-card-thumb {
-  position: relative !important;
-  overflow: hidden !important;
-  margin: 0 !important;
-  width: 280px !important;
-  aspect-ratio: 16 / 9 !important;
-  height: auto !important;
-  flex-shrink: 0 !important;
 }
 
 .entry-card-thumb-image {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
+  border-radius: var(--radius-md) !important;
   transition: transform 0.5s ease !important;
 }
 
 .entry-card-wrap.a-wrap:hover .entry-card-thumb-image {
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
 
 .cat-label {
-  position: absolute !important;
-  top: 12px !important;
-  left: 12px !important;
   background: var(--primary-gradient) !important;
   color: #ffffff !important;
-  padding: 4px 12px !important;
+  padding: 3px 10px !important;
   font-size: 0.75rem !important;
   font-weight: 700 !important;
-  border-radius: 20px !important;
-  box-shadow: 0 4px 10px rgba(99, 102, 241, 0.25) !important;
-  z-index: 2;
-}
-
-.entry-card-content {
-  padding: 24px !important;
-  margin-left: 0 !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important;
-  flex: 1 !important;
+  border-radius: 4px !important;
+  border: none !important;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.2) !important;
 }
 
 .entry-card-title {
-  font-size: 1.2rem !important;
+  font-size: 1.15rem !important;
   font-weight: 700 !important;
-  line-height: 1.5 !important;
+  line-height: 1.45 !important;
   color: var(--text-main) !important;
-  margin: 0 0 10px 0 !important;
+  margin: 0 0 8px 0 !important;
   transition: color 0.2s ease !important;
-  display: -webkit-box !important;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }
 
 .entry-card-wrap.a-wrap:hover .entry-card-title {
@@ -211,33 +156,23 @@ body.public-page {
 }
 
 .entry-card-snippet {
-  font-size: 0.875rem !important;
-  line-height: 1.6 !important;
+  font-size: 0.85rem !important;
+  line-height: 1.55 !important;
   color: var(--text-muted) !important;
-  margin-bottom: 12px !important;
-  display: -webkit-box !important;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }
 
 .entry-card-meta {
-  display: flex !important;
-  align-items: center !important;
   font-size: 0.8rem !important;
   color: var(--text-light) !important;
-  margin-top: auto !important;
 }
 
 .entry-card-info span {
-  margin-right: 16px !important;
   display: inline-flex !important;
   align-items: center !important;
 }
 
 .entry-card-info .fa {
-  margin-right: 5px !important;
-  color: var(--text-light);
+  margin-right: 4px !important;
 }
 
 .entry-card-categorys {
@@ -541,17 +476,9 @@ body.public-page {
 
 /*834px以下*/
 @media screen and (max-width: 834px) {
-  .entry-card-wrap.a-wrap {
-    flex-direction: column !important;
-  }
+  /* Let Cocoon handle responsive card widths, just keep styling */
   .entry-card {
-    flex-direction: column !important;
-  }
-  .entry-card-thumb {
-    width: 100% !important;
-  }
-  .entry-card-content {
-    padding: 20px !important;
+    padding: 12px !important;
   }
 }
 
