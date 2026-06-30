@@ -15,70 +15,50 @@ Version:    1.1.2
 ************************************/
 :root {
   --primary-color: #6366f1; /* Indigo */
-  --accent-color: #22d3ee; /* Neon Cyan */
-  --accent-neon: #10b981; /* Neon Emerald for Success status */
+  --primary-hover: #4f46e5;
+  --secondary-color: #06b6d4; /* Cyan */
   --primary-gradient: linear-gradient(135deg, #6366f1, #06b6d4);
-  --bg-dark: #090d16; /* Deep space slate */
-  --bg-card: rgba(15, 23, 42, 0.65); /* Glassmorphic panel background */
-  --border-neon: rgba(99, 102, 241, 0.25);
-  --border-neon-hover: rgba(34, 211, 238, 0.6);
-  --text-main: #f8fafc; /* Slate 50 */
-  --text-muted: #94a3b8; /* Slate 400 */
-  --text-dim: #64748b; /* Slate 600 */
-  --radius-lg: 12px;
-  --radius-md: 6px;
+  --text-main: #0f172a; /* Slate 900 */
+  --text-muted: #475569; /* Slate 600 */
+  --text-light: #94a3b8; /* Slate 400 */
+  --bg-body: #f8fafc; /* Slate 50 */
+  --bg-card: #ffffff;
+  --border-color: #e2e8f0; /* Slate 200 */
+  --card-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.04), 0 2px 8px -1px rgba(15, 23, 42, 0.02);
+  --card-shadow-hover: 0 20px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.05);
+  --radius-lg: 16px;
+  --radius-md: 8px;
   --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  --font-mono: "JetBrains Mono", "Consolas", "Courier New", monospace;
 }
 
-/* Space Vibe & Grid Background */
+/* Global Reset overrides */
 body.public-page {
-  background-color: var(--bg-dark) !important;
+  background-color: var(--bg-body) !important;
   color: var(--text-main) !important;
-  font-family: var(--font-mono), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans JP", sans-serif !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans JP", sans-serif !important;
   -webkit-font-smoothing: antialiased;
-  position: relative;
 }
 
-body.public-page::before {
-  content: '' !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100vw !important;
-  height: 100vh !important;
-  background-image: 
-    radial-gradient(rgba(99, 102, 241, 0.08) 1px, transparent 1px) !important;
-  background-size: 24px 24px !important;
-  z-index: -1 !important;
-  pointer-events: none !important;
-}
-
-/* Containers */
+/* Container spacing */
 .wrap {
   max-width: 1240px !important;
   padding: 0 20px !important;
 }
 
-.main, .sidebar {
-  background: none !important;
-  border: none !important;
-}
-
 /* Header & Navigation Modernization */
 #header-container {
-  background-color: var(--bg-dark) !important;
-  border-bottom: 1px solid var(--border-neon) !important;
-  position: relative;
-}
-
-/* Hide standard logo image if uploaded to force terminal text logo style */
-.site-logo-image {
-  display: none !important;
+  background-color: #ffffff !important;
+  border-bottom: 1px solid var(--border-color) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02) !important;
 }
 
 .logo-header {
-  padding: 24px 0 !important;
+  padding: 20px 0 !important;
+}
+
+/* Hide standard logo image to force the new text logo style */
+.site-logo-image {
+  display: none !important;
 }
 
 .site-name-text {
@@ -89,55 +69,33 @@ body.public-page::before {
 }
 
 .site-name-text::before {
-  content: 'AI実験室 // LAB_SYSTEM' !important;
+  content: 'AI実験室' !important;
   visibility: visible !important;
   position: absolute !important;
   left: 0 !important;
   top: 0 !important;
   white-space: nowrap !important;
-  font-family: var(--font-mono) !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
   font-weight: 800 !important;
   letter-spacing: -0.5px !important;
-  background: linear-gradient(135deg, #a5b4fc, #22d3ee) !important;
+  background: var(--primary-gradient) !important;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
 }
 
-@keyframes cursor-blink {
-  50% { opacity: 0; }
-}
-
-.site-name-text::after {
-  content: '_' !important;
-  visibility: visible !important;
-  position: absolute !important;
-  right: -16px !important;
-  top: 0 !important;
-  color: var(--accent-color) !important;
-  animation: cursor-blink 1.1s step-end infinite !important;
-}
-
 #navi {
-  background-color: rgba(9, 13, 22, 0.8) !important;
-  backdrop-filter: blur(8px);
-  border-top: 1px solid var(--border-neon) !important;
-  border-bottom: 1px solid var(--border-neon) !important;
+  background-color: #ffffff !important;
+  border-top: 1px solid var(--border-color) !important;
+  border-bottom: 1px solid var(--border-color) !important;
 }
 
 #navi .navi-in a {
-  font-family: var(--font-mono) !important;
-  font-size: 0.9rem !important;
+  font-size: 0.95rem !important;
   font-weight: 600 !important;
   color: var(--text-muted) !important;
   padding: 16px 20px !important;
   transition: var(--transition-smooth) !important;
   position: relative !important;
-}
-
-#navi .navi-in a::before {
-  content: '$ ' !important;
-  color: var(--accent-color);
-  opacity: 0.5;
 }
 
 #navi .navi-in a::after {
@@ -146,28 +104,27 @@ body.public-page::before {
   left: 50% !important;
   bottom: 0 !important;
   width: 0 !important;
-  height: 2px !important;
-  background: var(--accent-color) !important;
+  height: 3px !important;
+  background: var(--primary-gradient) !important;
   transition: var(--transition-smooth) !important;
   transform: translateX(-50%) !important;
-  box-shadow: 0 0 8px var(--accent-color) !important;
 }
 
 #navi .navi-in a:hover {
   background: none !important;
-  color: #ffffff !important;
+  color: var(--primary-color) !important;
 }
 
 #navi .navi-in a:hover::after {
   width: 80% !important;
 }
 
-/* Research Logs (Article Cards) */
+/* Article Cards Styling */
 .entry-card-wrap.a-wrap {
-  border: 1px solid var(--border-neon) !important;
+  border: none !important;
   border-radius: var(--radius-lg) !important;
+  box-shadow: var(--card-shadow) !important;
   background-color: var(--bg-card) !important;
-  backdrop-filter: blur(12px);
   margin-bottom: 24px !important;
   overflow: hidden !important;
   transform: translateY(0);
@@ -177,9 +134,9 @@ body.public-page::before {
 }
 
 .entry-card-wrap.a-wrap:hover {
-  transform: translateY(-4px);
-  border-color: var(--border-neon-hover) !important;
-  box-shadow: 0 0 25px rgba(34, 211, 238, 0.15), inset 0 0 10px rgba(34, 211, 238, 0.05) !important;
+  transform: translateY(-6px);
+  box-shadow: var(--card-shadow-hover) !important;
+  background-color: var(--bg-card) !important;
 }
 
 .entry-card {
@@ -196,7 +153,7 @@ body.public-page::before {
   position: relative !important;
   overflow: hidden !important;
   margin: 0 !important;
-  width: 260px !important;
+  width: 280px !important;
   aspect-ratio: 16 / 9 !important;
   height: auto !important;
   flex-shrink: 0 !important;
@@ -206,29 +163,24 @@ body.public-page::before {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
-  filter: grayscale(20%) contrast(110%) !important;
-  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transition: transform 0.5s ease !important;
 }
 
 .entry-card-wrap.a-wrap:hover .entry-card-thumb-image {
-  transform: scale(1.04);
-  filter: grayscale(0%) contrast(100%) !important;
+  transform: scale(1.05);
 }
 
-/* Glowing Category Badges styled as Terminal Tags */
 .cat-label {
   position: absolute !important;
   top: 12px !important;
   left: 12px !important;
-  background: rgba(99, 102, 241, 0.2) !important;
-  border: 1px solid var(--primary-color) !important;
-  color: #e0e7ff !important;
-  padding: 2px 8px !important;
-  font-size: 0.7rem !important;
+  background: var(--primary-gradient) !important;
+  color: #ffffff !important;
+  padding: 4px 12px !important;
+  font-size: 0.75rem !important;
   font-weight: 700 !important;
-  border-radius: 4px !important;
-  font-family: var(--font-mono) !important;
-  box-shadow: 0 0 10px rgba(99, 102, 241, 0.3) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 4px 10px rgba(99, 102, 241, 0.25) !important;
   z-index: 2;
 }
 
@@ -241,14 +193,12 @@ body.public-page::before {
   flex: 1 !important;
 }
 
-/* Prompt Prefix for Log Titles */
 .entry-card-title {
-  font-family: var(--font-mono) !important;
-  font-size: 1.15rem !important;
+  font-size: 1.2rem !important;
   font-weight: 700 !important;
   line-height: 1.5 !important;
   color: var(--text-main) !important;
-  margin: 0 0 12px 0 !important;
+  margin: 0 0 10px 0 !important;
   transition: color 0.2s ease !important;
   display: -webkit-box !important;
   -webkit-line-clamp: 2;
@@ -256,19 +206,12 @@ body.public-page::before {
   overflow: hidden;
 }
 
-.entry-card-title::before {
-  content: '> ' !important;
-  color: var(--accent-color) !important;
-  font-weight: bold;
-}
-
 .entry-card-wrap.a-wrap:hover .entry-card-title {
-  color: var(--accent-color) !important;
-  text-shadow: 0 0 8px rgba(34, 211, 238, 0.5);
+  color: var(--primary-color) !important;
 }
 
 .entry-card-snippet {
-  font-size: 0.85rem !important;
+  font-size: 0.875rem !important;
   line-height: 1.6 !important;
   color: var(--text-muted) !important;
   margin-bottom: 12px !important;
@@ -278,118 +221,59 @@ body.public-page::before {
   overflow: hidden;
 }
 
-/* Custom Sys Metadata Format */
 .entry-card-meta {
   display: flex !important;
   align-items: center !important;
-  font-size: 0.75rem !important;
-  font-family: var(--font-mono) !important;
-  color: var(--text-dim) !important;
+  font-size: 0.8rem !important;
+  color: var(--text-light) !important;
   margin-top: auto !important;
-  gap: 16px;
 }
 
 .entry-card-info span {
-  margin-right: 0 !important;
+  margin-right: 16px !important;
   display: inline-flex !important;
   align-items: center !important;
 }
 
-.post-date::before {
-  content: '[SYS_TIME: ' !important;
-}
-.post-date::after {
-  content: ']' !important;
-}
-.post-update::before {
-  content: '[SYS_MOD: ' !important;
-}
-.post-update::after {
-  content: ']' !important;
-}
-
 .entry-card-info .fa {
-  display: none !important; /* Hide standard icons for terminal look */
-}
-
-/* Add custom static status tag for visual vibe */
-.entry-card-info::after {
-  content: '[STATUS: SUCCESS]' !important;
-  color: var(--accent-neon) !important;
-  font-weight: bold;
-  margin-left: 16px;
+  margin-right: 5px !important;
+  color: var(--text-light);
 }
 
 .entry-card-categorys {
   display: none !important;
 }
 
-/* Sidebar Console Monitors */
+/* Sidebar Widget Cardification */
 .widget {
   background-color: var(--bg-card) !important;
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--border-neon) !important;
   border-radius: var(--radius-lg) !important;
   padding: 24px !important;
+  box-shadow: var(--card-shadow) !important;
   margin-bottom: 24px !important;
-  box-shadow: none !important;
+  border: none !important;
 }
 
 .widget-title {
+  position: relative !important;
   border: none !important;
   background: none !important;
-  padding: 0 0 10px 0 !important;
+  padding: 0 0 12px 0 !important;
   margin-bottom: 16px !important;
-  font-size: 0.95rem !important;
+  font-size: 1.05rem !important;
   font-weight: 700 !important;
-  font-family: var(--font-mono) !important;
-  color: var(--accent-color) !important;
-  border-bottom: 1px solid rgba(99, 102, 241, 0.2) !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.5px !important;
-  position: relative !important;
+  color: var(--text-main) !important;
 }
 
-.widget-title::before {
-  content: ':: ' !important;
-  color: var(--text-dim) !important;
-}
-
-/* Specific Panel renaming via CSS */
-.widget_author_box .widget-title {
-  visibility: hidden !important;
-  position: relative !important;
-}
-.widget_author_box .widget-title::after {
-  content: ':: CHIEF_RESEARCHER' !important;
-  visibility: visible !important;
+.widget-title::after {
+  content: '' !important;
   position: absolute !important;
   left: 0 !important;
-  color: var(--accent-color) !important;
-}
-
-.widget_recent_entries .widget-title {
-  visibility: hidden !important;
-  position: relative !important;
-}
-.widget_recent_entries .widget-title::after {
-  content: ':: RECENT_LOGS' !important;
-  visibility: visible !important;
-  position: absolute !important;
-  left: 0 !important;
-  color: var(--accent-color) !important;
-}
-
-.widget_categories .widget-title {
-  visibility: hidden !important;
-  position: relative !important;
-}
-.widget_categories .widget-title::after {
-  content: ':: LOG_CATEGORIES' !important;
-  visibility: visible !important;
-  position: absolute !important;
-  left: 0 !important;
-  color: var(--accent-color) !important;
+  bottom: 0 !important;
+  width: 32px !important;
+  height: 3px !important;
+  background: var(--primary-gradient) !important;
+  border-radius: 2px !important;
 }
 
 .widget_categories ul, .widget_archive ul, .widget_recent_entries ul {
@@ -400,11 +284,10 @@ body.public-page::before {
 
 .widget_categories li, .widget_archive li, .widget_recent_entries li {
   padding: 10px 0 !important;
-  border-bottom: 1px solid rgba(99, 102, 241, 0.15) !important;
+  border-bottom: 1px solid var(--border-color) !important;
   display: flex !important;
   justify-content: space-between !important;
   align-items: center !important;
-  font-family: var(--font-mono) !important;
 }
 
 .widget_categories li:last-child, .widget_archive li:last-child, .widget_recent_entries li:last-child {
@@ -414,34 +297,26 @@ body.public-page::before {
 .widget_categories a, .widget_archive a, .widget_recent_entries a {
   color: var(--text-muted) !important;
   text-decoration: none !important;
-  font-size: 0.85rem !important;
+  font-size: 0.9rem !important;
   font-weight: 500 !important;
-  transition: var(--transition-smooth) !important;
+  transition: color 0.2s ease !important;
   flex: 1 !important;
 }
 
-.widget_categories a::before, .widget_archive a::before, .widget_recent_entries a::before {
-  content: '> ' !important;
-  color: var(--accent-color);
-  opacity: 0.6;
-}
-
 .widget_categories a:hover, .widget_archive a:hover, .widget_recent_entries a:hover {
-  color: #ffffff !important;
-  padding-left: 4px;
+  color: var(--primary-color) !important;
 }
 
 .post-count {
-  background-color: rgba(34, 211, 238, 0.08) !important;
-  border: 1px solid rgba(34, 211, 238, 0.25) !important;
-  color: var(--accent-color) !important;
+  background-color: #f1f5f9 !important;
+  color: var(--text-muted) !important;
   font-size: 0.75rem !important;
   font-weight: 600 !important;
-  padding: 1px 6px !important;
-  border-radius: 4px !important;
+  padding: 2px 8px !important;
+  border-radius: 12px !important;
 }
 
-/* Researcher Profile Card */
+/* Author Box Redesign */
 .author-box {
   border: none !important;
   background: none !important;
@@ -451,36 +326,33 @@ body.public-page::before {
 
 .author-thumb.circle-image img {
   border-radius: 50% !important;
-  border: 3px solid rgba(99, 102, 241, 0.3) !important;
-  box-shadow: 0 0 15px rgba(99, 102, 241, 0.2) !important;
+  border: 4px solid #ffffff !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08) !important;
   transition: var(--transition-smooth) !important;
 }
 
 .author-thumb.circle-image img:hover {
-  transform: rotate(6deg) scale(1.04);
-  border-color: var(--accent-color) !important;
-  box-shadow: 0 0 20px rgba(34, 211, 238, 0.3) !important;
+  transform: rotate(5deg) scale(1.05);
 }
 
 .author-name a {
-  font-family: var(--font-mono) !important;
-  font-size: 1.1rem !important;
+  font-size: 1.15rem !important;
   font-weight: 700 !important;
-  color: var(--accent-color) !important;
+  color: var(--text-main) !important;
   text-decoration: none !important;
 }
 
 .author-description p {
-  font-size: 0.85rem !important;
+  font-size: 0.875rem !important;
   line-height: 1.7 !important;
   color: var(--text-muted) !important;
   text-align: left !important;
 }
 
 .sns-follow-message {
-  font-family: var(--font-mono) !important;
-  font-size: 0.75rem !important;
-  color: var(--text-dim) !important;
+  font-size: 0.8rem !important;
+  font-weight: 700 !important;
+  color: var(--text-muted) !important;
   margin-bottom: 12px !important;
 }
 
@@ -491,116 +363,105 @@ body.public-page::before {
 }
 
 .sns-button.follow-button {
-  width: 36px !important;
-  height: 36px !important;
+  width: 38px !important;
+  height: 38px !important;
   border-radius: 50% !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   transition: var(--transition-smooth) !important;
-  background-color: rgba(99, 102, 241, 0.1) !important;
-  border: 1px solid var(--border-neon) !important;
+  background-color: #f1f5f9 !important;
   color: var(--text-muted) !important;
-  font-size: 0.95rem !important;
+  border: none !important;
+  font-size: 1rem !important;
   text-decoration: none !important;
 }
 
 .sns-button.follow-button:hover {
   transform: translateY(-3px) !important;
-  background-color: var(--accent-color) !important;
-  border-color: var(--accent-color) !important;
-  color: var(--bg-dark) !important;
-  box-shadow: 0 0 10px rgba(34, 211, 238, 0.4) !important;
+  background-color: var(--primary-color) !important;
+  color: #ffffff !important;
 }
 
-/* Pagination Console Buttons */
+.website-follow-button-sq:hover {
+  background-color: #10b981 !important;
+}
+
+.x-corp-follow-button-sq:hover {
+  background-color: #000000 !important;
+}
+
+.rss-follow-button-sq:hover {
+  background-color: #f97316 !important;
+}
+
+/* Pagination Styling */
 .pagination .current {
   background: var(--primary-gradient) !important;
   color: #ffffff !important;
-  border: 1px solid var(--accent-color) !important;
+  border-color: transparent !important;
   border-radius: var(--radius-md) !important;
   font-weight: 700 !important;
-  box-shadow: 0 0 12px rgba(99, 102, 241, 0.3) !important;
+  box-shadow: 0 4px 10px rgba(99, 102, 241, 0.2) !important;
 }
 
 .pagination a, .page-numbers {
   border-radius: var(--radius-md) !important;
   transition: var(--transition-smooth) !important;
   color: var(--text-muted) !important;
-  border: 1px solid var(--border-neon) !important;
-  background-color: rgba(15, 23, 42, 0.4) !important;
+  border-color: var(--border-color) !important;
   padding: 8px 16px !important;
   font-weight: 600 !important;
-  font-family: var(--font-mono) !important;
 }
 
 .pagination a:hover {
-  background-color: var(--accent-color) !important;
-  color: var(--bg-dark) !important;
-  border-color: var(--accent-color) !important;
+  background-color: var(--primary-color) !important;
+  color: #ffffff !important;
+  border-color: var(--primary-color) !important;
   transform: translateY(-2px);
-  box-shadow: 0 0 12px rgba(34, 211, 238, 0.4) !important;
 }
 
 .pagination-next-link {
-  background: rgba(34, 211, 238, 0.1) !important;
-  color: var(--accent-color) !important;
-  border: 1px solid var(--accent-color) !important;
+  background: var(--primary-gradient) !important;
+  color: #ffffff !important;
+  border: none !important;
   border-radius: var(--radius-md) !important;
   font-weight: 700 !important;
-  font-family: var(--font-mono) !important;
+  box-shadow: 0 4px 10px rgba(99, 102, 241, 0.2) !important;
   transition: var(--transition-smooth) !important;
 }
 
 .pagination-next-link:hover {
-  background-color: var(--accent-color) !important;
-  color: var(--bg-dark) !important;
+  opacity: 0.9 !important;
   transform: translateY(-2px);
-  box-shadow: 0 0 12px rgba(34, 211, 238, 0.4) !important;
 }
 
-/* Research Log Headings (Article View) */
+/* Article Headings Modernization */
 .article h2 {
-  background: rgba(15, 23, 42, 0.8) !important;
-  border: 1px solid var(--border-neon) !important;
-  border-left: 6px solid var(--accent-color) !important;
+  background: #f1f5f9 !important;
+  border: none !important;
+  border-left: 6px solid var(--primary-color) !important;
   color: var(--text-main) !important;
   padding: 16px 20px !important;
-  font-size: 1.35rem !important;
+  font-size: 1.4rem !important;
   font-weight: 700 !important;
   border-radius: 4px !important;
   margin-top: 40px !important;
   margin-bottom: 24px !important;
-  box-shadow: 0 0 15px rgba(99, 102, 241, 0.1) !important;
-  font-family: var(--font-mono) !important;
-}
-
-.article h2::before {
-  content: 'LOG_SECTION_REF // ' !important;
-  color: var(--text-dim) !important;
-  font-size: 0.75rem !important;
-  display: block !important;
-  margin-bottom: 4px !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.01) !important;
 }
 
 .article h3 {
   border: none !important;
-  border-bottom: 2px solid rgba(99, 102, 241, 0.2) !important;
+  border-bottom: 2px solid var(--border-color) !important;
   position: relative !important;
   padding-bottom: 10px !important;
-  font-size: 1.15rem !important;
+  font-size: 1.2rem !important;
   font-weight: 700 !important;
   color: var(--text-main) !important;
   margin-top: 32px !important;
   margin-bottom: 20px !important;
   background: none !important;
-  font-family: var(--font-mono) !important;
-}
-
-.article h3::before {
-  content: 'REF_SUB_LOG_A > ' !important;
-  color: var(--accent-color) !important;
-  font-size: 0.8rem !important;
 }
 
 .article h3::after {
@@ -610,39 +471,35 @@ body.public-page::before {
   left: 0 !important;
   width: 50px !important;
   height: 2px !important;
-  background: var(--accent-color) !important;
-  box-shadow: 0 0 8px var(--accent-color) !important;
+  background: var(--primary-gradient) !important;
 }
 
 .article h4 {
-  font-size: 1rem !important;
+  font-size: 1.05rem !important;
   font-weight: 700 !important;
   color: var(--text-main) !important;
   margin-top: 24px !important;
   margin-bottom: 16px !important;
   padding-left: 12px !important;
-  border-left: 3px solid var(--accent-color) !important;
-  font-family: var(--font-mono) !important;
+  border-left: 3px solid var(--primary-color) !important;
 }
 
-/* Footer Panel */
+/* Footer Modernization */
 #footer {
-  background-color: var(--bg-dark) !important;
-  border-top: 1px solid var(--border-neon) !important;
-  color: var(--text-dim) !important;
+  background-color: #0f172a !important;
+  color: #94a3b8 !important;
   padding: 50px 0 40px 0 !important;
+  border-top: none !important;
 }
 
 #footer a {
-  color: var(--text-muted) !important;
+  color: #cbd5e1 !important;
   text-decoration: none !important;
   transition: color 0.2s ease !important;
-  font-family: var(--font-mono) !important;
 }
 
 #footer a:hover {
-  color: var(--accent-color) !important;
-  text-shadow: 0 0 6px var(--accent-color);
+  color: #ffffff !important;
 }
 
 .footer-bottom {
@@ -663,19 +520,13 @@ body.public-page::before {
 }
 
 .menu-footer li a {
-  font-size: 0.85rem !important;
+  font-size: 0.875rem !important;
   font-weight: 500 !important;
 }
 
-.menu-footer li a::before {
-  content: '$ ' !important;
-  color: var(--accent-color);
-}
-
 .copyright {
-  font-family: var(--font-mono) !important;
-  font-size: 0.75rem !important;
-  color: var(--text-dim) !important;
+  font-size: 0.8rem !important;
+  color: #64748b !important;
 }
 
 /************************************
@@ -702,23 +553,15 @@ body.public-page::before {
   .entry-card-content {
     padding: 20px !important;
   }
-  .entry-card-info::after {
-    margin-left: 0;
-    display: block !important;
-    margin-top: 4px;
-  }
 }
 
 /*480px以下*/
 @media screen and (max-width: 480px) {
-  .site-name-text::before {
-    content: 'AI実験室 // LAB' !important;
-  }
   .entry-card-title {
-    font-size: 1.05rem !important;
+    font-size: 1.1rem !important;
   }
   .article h2 {
-    font-size: 1.15rem !important;
+    font-size: 1.25rem !important;
     padding: 12px 16px !important;
   }
 }
