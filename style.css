@@ -492,3 +492,66 @@ body.public-page {
     padding: 12px 16px !important;
   }
 }
+
+/* ==========================================================================
+   AI先生の知恵袋 - 共通コンポーネント (.ai-note)
+   ========================================================================== */
+.ai-note {
+  background-color: #fafafa !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 16px !important;
+  padding: 32px !important;
+  margin: 40px 0 !important;
+  box-sizing: border-box !important;
+  color: #1f2937 !important;
+  box-shadow: none !important;
+}
+
+.ai-note-title {
+  font-size: 1.15rem !important;
+  font-weight: 700 !important;
+  color: #111111 !important;
+  margin: 0 0 20px 0 !important;
+  border: none !important;
+  background: none !important;
+  padding: 0 0 10px 0 !important;
+  border-bottom: 1px solid #e5e7eb !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.ai-note p {
+  font-size: 0.95rem !important;
+  line-height: 1.7 !important;
+  color: #374151 !important;
+  margin-bottom: 16px !important;
+}
+
+.ai-note p:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* 画像が入った場合、綺麗に100%幅で中央配置 */
+.ai-note img {
+  max-width: 100% !important;
+  height: auto !important;
+  display: block !important;
+  margin: 24px auto !important;
+  border-radius: 8px !important;
+  border: 1px solid #e5e7eb !important;
+}
+
+/* レスポンシブ調整 */
+@media screen and (max-width: 768px) {
+  .ai-note {
+    padding: 20px !important;
+    margin: 28px 0 !important;
+    border-radius: 12px !important;
+  }
+  .ai-note-title {
+    font-size: 1.05rem !important;
+    margin-bottom: 16px !important;
+  }
+}
+
