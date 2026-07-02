@@ -506,7 +506,15 @@ body.public-page {
   box-sizing: border-box;
   color: #1f2937;
   box-shadow: none;
-  transition: all 0.2s ease;
+  transition: .2s ease;
+}
+
+.ai-note > *:first-child {
+  margin-top: 0;
+}
+
+.ai-note > *:last-child {
+  margin-bottom: 0;
 }
 
 .ai-note-title {
@@ -558,6 +566,7 @@ body.public-page {
     border-left-width: 3px;
   }
 }
+
 
 
 
