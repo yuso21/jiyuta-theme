@@ -497,14 +497,16 @@ body.public-page {
    AI先生の知恵袋 - 共通コンポーネント (.ai-note)
    ========================================================================== */
 .ai-note {
-  background-color: #fafafa;
-  border: 1px solid #e5e7eb;
+  width: 100%;
+  background-color: #ffffff;
+  border: 1px solid #ececec;
   border-radius: 16px;
   padding: 32px;
   margin: 40px 0;
   box-sizing: border-box;
   color: #1f2937;
   box-shadow: none;
+  transition: all 0.2s ease;
 }
 
 .ai-note-title {
@@ -532,12 +534,12 @@ body.public-page {
   margin-bottom: 0;
 }
 
-/* 画像が入った場合、綺麗に100%幅で中央配置（枠線なし） */
+/* 画像が入った場合、綺麗に100%幅で中央配置（枠線なし、マージン広め） */
 .ai-note img {
   max-width: 100%;
   height: auto;
   display: block;
-  margin: 24px auto;
+  margin: 28px auto;
   border-radius: 8px;
   border: none;
 }
@@ -556,5 +558,6 @@ body.public-page {
     border-left-width: 3px;
   }
 }
+
 
 
