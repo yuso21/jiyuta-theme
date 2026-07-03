@@ -1,5 +1,5 @@
 /* ==========================================================================
-   AI実験室 (Custom Home Template) - Dedicated Stylesheet (第2版)
+   AI実験室 (Custom Home Template) - Dedicated Stylesheet (最終版)
    ========================================================================== */
 
 .daifuk-home-layout {
@@ -147,79 +147,11 @@
 }
 
 /* ==========================================================================
-   Grids
-   ========================================================================== */
-.daifuk-grid-4 {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-}
-
-.daifuk-grid-3 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
-}
-
-.daifuk-grid-2 {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 32px;
-}
-
-.daifuk-grid-5 {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 20px;
-}
-
-/* ==========================================================================
-   Buttons
-   ========================================================================== */
-.daifuk-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12px 28px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  border-radius: 8px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  cursor: pointer;
-  text-decoration: none !important;
-}
-
-.daifuk-btn-primary {
-  background-color: #111827;
-  color: #ffffff !important;
-  border: 1px solid #111827;
-}
-
-.daifuk-btn-primary:hover {
-  background-color: #6366f1;
-  border-color: #6366f1;
-  transform: translateY(-2px);
-}
-
-.daifuk-btn-secondary {
-  background-color: transparent;
-  color: #111827 !important;
-  border: 1px solid #d1d5db;
-  margin-left: 16px;
-}
-
-.daifuk-btn-secondary:hover {
-  background-color: #f9fafb;
-  border-color: #111827;
-  transform: translateY(-2px);
-}
-
-/* ==========================================================================
-   ① HERO Section (Split Layout)
+   ① HERO Section (Parallax & Fade In)
    ========================================================================== */
 .daifuk-hero {
   background-color: #ffffff;
-  padding: 120px 0 100px 0;
+  padding: 140px 0 120px 0;
   border-bottom: 1px solid #ececec;
 }
 
@@ -241,11 +173,23 @@
   align-items: center;
 }
 
-.daifuk-hero-media img {
-  max-width: 100%;
-  height: auto;
+.daifuk-parallax-container {
+  overflow: hidden;
   border-radius: 16px;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  position: relative;
   box-shadow: 0 20px 40px rgba(15, 23, 42, 0.05);
+}
+
+#daifuk-hero-img {
+  width: 100%;
+  height: 120%; /* 余白を持たせて動いた際に見切れるのを防ぐ */
+  object-fit: cover;
+  position: absolute;
+  top: -10%;
+  left: 0;
+  transition: transform 0.1s ease-out;
 }
 
 .daifuk-hero-title {
@@ -268,64 +212,170 @@
   display: flex;
 }
 
+/* Fade in Animation */
+.daifuk-fade-in {
+  animation: daifukFadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+
+@keyframes daifukFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* ==========================================================================
-   Cards
+   ② Welcome Section (Brand Introduction)
    ========================================================================== */
-.daifuk-card {
-  background-color: #ffffff;
-  border: 1px solid #ececec;
-  border-radius: 14px;
-  overflow: hidden;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  display: flex;
-  flex-direction: column;
-  text-decoration: none !important;
-  color: inherit !important;
+.daifuk-welcome-sec {
+  text-align: center;
+  padding: 120px 0 !important;
 }
 
-.daifuk-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.04), 0 8px 10px -6px rgba(15, 23, 42, 0.03);
-  border-color: #9ca3af;
+.daifuk-welcome-box {
+  max-width: 720px;
+  margin: 0 auto;
 }
 
-.daifuk-card-img-wrapper {
-  width: 100%;
+.daifuk-welcome-title {
+  font-size: 2.2rem;
+  font-weight: 850;
+  letter-spacing: -0.02em;
+  margin-bottom: 32px;
+  color: #111827;
+}
+
+.daifuk-welcome-text {
+  font-size: 1rem;
+  color: #4b5563;
+  line-height: 1.8;
+}
+
+.daifuk-welcome-text p {
+  margin-bottom: 20px;
+}
+
+.daifuk-welcome-text p:last-child {
+  margin-bottom: 0;
+}
+
+.daifuk-lead-text {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.daifuk-status-pill {
+  display: inline-block;
+  background-color: #f1f5f9;
+  color: #334155;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-top: 24px;
+}
+
+.daifuk-status-pill span {
+  color: #6366f1;
+}
+
+/* ==========================================================================
+   ③ AI実験ノート Section (Integration with Cocoon Cards)
+   ========================================================================== */
+.daifuk-grid-cocoon {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+/* CocoonカードをオーバーライドしてApple風のクリーンデザインへ調律 */
+.daifuk-grid-cocoon .entry-card-wrap {
+  width: 100% !important;
+  margin: 0 !important;
+  background-color: #ffffff !important;
+  border: 1px solid #ececec !important;
+  border-radius: 14px !important;
+  box-shadow: none !important;
+  overflow: hidden !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.daifuk-grid-cocoon .entry-card-wrap:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.04), 0 8px 10px -6px rgba(15, 23, 42, 0.03) !important;
+  border-color: #9ca3af !important;
+}
+
+.daifuk-grid-cocoon .card-thumb {
+  margin: 0 !important;
+  border-radius: 0 !important;
   aspect-ratio: 16 / 9;
-  background-color: #f3f4f6;
   position: relative;
   overflow: hidden;
 }
 
-.daifuk-card-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
+.daifuk-grid-cocoon .card-thumb-image {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  transition: transform 0.5s ease !important;
 }
 
-.daifuk-card:hover .daifuk-card-img {
-  transform: scale(1.03);
+.daifuk-grid-cocoon .entry-card-wrap:hover .card-thumb-image {
+  transform: scale(1.03) !important;
 }
 
-.daifuk-card-body {
-  padding: 20px;
+.daifuk-grid-cocoon .card-content {
+  padding: 20px !important;
   display: flex;
   flex-direction: column;
-  flex: 1;
+  height: calc(100% - 150px);
 }
 
-.daifuk-card-meta {
-  font-size: 0.72rem;
-  color: #9ca3af;
-  font-family: "JetBrains Mono", "Consolas", monospace;
-  margin-bottom: 12px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.daifuk-grid-cocoon .entry-card-title {
+  font-size: 0.98rem !important;
+  font-weight: 700 !important;
+  line-height: 1.45 !important;
+  color: #111827 !important;
+  margin: 0 0 10px 0 !important;
+  height: 2.9em;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  border: none !important;
+  background: none !important;
+  padding: 0 !important;
 }
 
+.daifuk-grid-cocoon .entry-card-wrap:hover .entry-card-title {
+  color: #6366f1 !important;
+}
+
+.daifuk-grid-cocoon .entry-card-snippet {
+  font-size: 0.8rem !important;
+  color: #4b5563 !important;
+  line-height: 1.6 !important;
+  height: 3.2em;
+  overflow: hidden;
+  margin-bottom: 12px !important;
+}
+
+.daifuk-grid-cocoon .entry-card-meta {
+  margin-top: auto !important;
+  padding-top: 12px;
+  border-top: 1px solid #f1f5f9;
+}
+
+/* 連載バッジ */
 .daifuk-card-badge {
+  display: inline-block;
   background-color: #6366f1;
   color: #ffffff;
   padding: 2px 8px;
@@ -333,143 +383,64 @@
   font-weight: 700;
   font-size: 0.68rem;
   letter-spacing: 0.05em;
-}
-
-.daifuk-card-title {
-  font-size: 0.98rem;
-  font-weight: 700;
-  line-height: 1.45;
-  color: #111827;
-  margin: 0 0 10px 0;
-  border: none !important;
-  background: none !important;
-  padding: 0 !important;
-}
-
-.daifuk-card:hover .daifuk-card-title {
-  color: #6366f1;
-}
-
-.daifuk-card-excerpt {
-  font-size: 0.82rem;
-  color: #4b5563;
-  line-height: 1.6;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  margin-bottom: 16px;
+  margin-top: 8px;
 }
 
 /* ==========================================================================
-   ③ AI先生の知恵袋 Section (Vertical border accent)
+   ④ 最新記事 Section (Text List)
    ========================================================================== */
-.daifuk-note-card {
-  border: 1px solid #ececec;
-  background-color: #ffffff;
-  border-radius: 14px;
-  padding: 32px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+.daifuk-latest-list {
   display: flex;
   flex-direction: column;
+  border-top: 1px solid #ececec;
+  margin-bottom: 30px;
+}
+
+.daifuk-latest-item {
+  display: flex;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid #ececec;
   text-decoration: none !important;
-  color: inherit !important;
+  color: #111827 !important;
+  font-size: 0.92rem;
+  transition: all 0.2s ease;
 }
 
-.daifuk-note-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.04), 0 8px 10px -6px rgba(15, 23, 42, 0.03);
-  border-color: #9ca3af;
+.daifuk-latest-item:hover {
+  color: #6366f1 !important;
+  padding-left: 8px;
 }
 
-.daifuk-note-card-title {
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: #111111;
-  border-left: 4px solid #111111;
-  padding: 2px 0 2px 12px;
-  margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  transition: all 0.3s ease;
-  line-height: 1.3;
-}
-
-.daifuk-note-card:hover .daifuk-note-card-title {
-  border-left-color: #6366f1;
-  color: #6366f1;
-}
-
-.daifuk-note-card-body {
-  font-size: 0.88rem;
-  color: #4b5563;
-  line-height: 1.7;
-}
-
-.daifuk-note-card-img-placeholder {
-  width: 100%;
-  height: 160px;
-  background-color: #f8fafc;
-  border: 1px solid #f1f5f9;
-  border-radius: 8px;
-  margin: 16px 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.daifuk-latest-date {
+  font-family: "JetBrains Mono", "Consolas", monospace;
   font-size: 0.8rem;
   color: #9ca3af;
-  font-family: "JetBrains Mono", "Consolas", monospace;
+  width: 120px;
+  flex-shrink: 0;
+}
+
+.daifuk-latest-title {
+  flex-grow: 1;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.daifuk-latest-arrow {
+  margin-left: 20px;
+  color: #cbd5e1;
+  transition: all 0.2s ease;
+}
+
+.daifuk-latest-item:hover .daifuk-latest-arrow {
+  color: #6366f1;
+  transform: translateX(4px);
 }
 
 /* ==========================================================================
-   ⑤ Categories Section
-   ========================================================================== */
-.daifuk-cat-card {
-  background-color: #ffffff;
-  border: 1px solid #ececec;
-  border-radius: 8px;
-  padding: 20px;
-  text-align: center;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  text-decoration: none !important;
-}
-
-.daifuk-cat-card:hover {
-  transform: translateY(-2px);
-  border-color: #111827;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
-}
-
-.daifuk-cat-icon {
-  width: 36px;
-  height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #6366f1;
-  font-size: 1.5rem;
-}
-
-.daifuk-cat-name {
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: #111827;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.daifuk-cat-card:hover .daifuk-cat-name {
-  color: #6366f1;
-}
-
-/* ==========================================================================
-   ⑥ Profile Section (Avatar Left, Copy Right)
+   ⑤ Profile Section (Avatar Left, Copy Right)
    ========================================================================== */
 .daifuk-profile-layout {
   display: flex;
@@ -547,7 +518,7 @@
 }
 
 /* ==========================================================================
-   ⑦ Contact Section (Slate Blue accents, service tags)
+   ⑥ Contact Section
    ========================================================================== */
 .daifuk-contact-box {
   border: 1px solid #ececec;
@@ -596,24 +567,122 @@
 }
 
 /* ==========================================================================
+   ⑦⑧⑨ Navigation & Search & Tag Cloud
+   ========================================================================== */
+.daifuk-nav-container {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.daifuk-nav-sub-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.daifuk-search-form-wrap {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.daifuk-search-form-wrap .search-form {
+  display: flex;
+}
+
+.daifuk-search-form-wrap .search-field {
+  flex-grow: 1;
+  border: 1px solid #ececec;
+  border-radius: 8px 0 0 8px;
+  padding: 10px 16px;
+  outline: none;
+}
+
+.daifuk-search-form-wrap .search-submit {
+  background-color: #111827;
+  color: #ffffff;
+  border: none;
+  border-radius: 0 8px 8px 0;
+  padding: 0 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.daifuk-search-form-wrap .search-submit:hover {
+  background-color: #6366f1;
+}
+
+/* Categories word list */
+.daifuk-categories-block .daifuk-nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+
+.daifuk-categories-block .daifuk-nav-list a {
+  background-color: #ffffff;
+  border: 1px solid #ececec;
+  border-radius: 20px;
+  padding: 8px 18px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #4b5563;
+  text-decoration: none !important;
+  transition: all 0.25s ease;
+}
+
+.daifuk-categories-block .daifuk-nav-list a:hover {
+  color: #6366f1;
+  border-color: #6366f1;
+  transform: translateY(-1px);
+}
+
+/* Tags horizontal word cloud */
+.daifuk-tags-block .daifuk-nav-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.daifuk-tags-block .daifuk-nav-tags a {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #9ca3af;
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+  background-color: #f9fafb;
+  border: 1px solid #f1f5f9;
+  border-radius: 4px;
+  padding: 4px 10px;
+}
+
+.daifuk-tags-block .daifuk-nav-tags a:hover {
+  color: #6366f1;
+  border-color: #e5e7eb;
+}
+
+/* ==========================================================================
    Responsive Rules
    ========================================================================== */
 @media screen and (max-width: 1024px) {
-  .daifuk-grid-4 {
+  .daifuk-grid-cocoon {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media screen and (max-width: 900px) {
-  .daifuk-grid-3, .daifuk-grid-2 {
+  .daifuk-grid-cocoon {
     grid-template-columns: 1fr;
     gap: 24px;
   }
   
-  .daifuk-grid-5 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
   .daifuk-hero-inner {
     flex-direction: column;
     text-align: center;
@@ -666,10 +735,6 @@
 
   .daifuk-btn-secondary {
     margin-left: 0;
-  }
-
-  .daifuk-grid-5 {
-    grid-template-columns: 1fr;
   }
 
   .daifuk-contact-badges span {

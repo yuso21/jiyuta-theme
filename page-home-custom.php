@@ -14,29 +14,27 @@ get_header();
   <div id="main" class="main" role="main">
     
     <?php
-    // ① HEROセクション（最上部）
+    // ① HEROセクション（最上部 - パララックス対応）
     get_template_part( 'tmp/home-hero' );
 
-    // ② 最新記事（NEW - 全カテゴリ最新4件）
-    get_template_part( 'tmp/home-latest' );
+    // ② ブランド紹介セクション（AI実験室へようこそ）
+    get_template_part( 'tmp/home-welcome' );
 
-    // ③ AI実験室（「AI実験室」カテゴリ最新4件）
+    // ③ AI実験ノート（カテゴリ最新4件 ＋ バッジ）
     get_template_part( 'tmp/home-lab' );
 
-    // ④ AI先生の知恵袋（「AI先生の知恵袋」カテゴリ最新4件）
-    get_template_part( 'tmp/home-chiebukuro' );
+    // ④ 最新記事（他カテゴリの最新5件テキストフィード）
+    get_template_part( 'tmp/home-latest' );
 
-    // ⑤ おすすめ記事（タグ・固定記事制御）
-    get_template_part( 'tmp/home-recommended' );
-
-    // ⑥ カテゴリー（5大カテゴリ）
-    get_template_part( 'tmp/home-categories' );
-
-    // ⑦ プロフィール（左右反転・詳細ボタン）
+    // ⑤ プロフィール（左右分割）
     get_template_part( 'tmp/home-profile' );
 
-    // ⑧ お問い合わせ（プレゼンス強化）
+    // ⑥ お問い合わせ（案内バッジ付き）
     get_template_part( 'tmp/home-contact' );
+
+    // ⑦⑧⑨ 検索・カテゴリー・タグ（最下部フッターナビゲーション）
+    get_template_part( 'tmp/home-search-tags' );
+
 
     ?>
 

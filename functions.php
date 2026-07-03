@@ -6,6 +6,19 @@ add_editor_style();
 
 //以下に子テーマ用の関数を書く
 
+// 表示制御用の定数定義
+define( 'TOP_EXPERIMENT_COUNT', 4 );
+define( 'TOP_LATEST_COUNT', 5 );
+
+// Cocoon標準カードのフックを利用して Experiment バッジを表示
+function daifuk_add_experiment_badge_to_card( $post_id ) {
+    $exp_num = get_daifuk_experiment_number( $post_id );
+    if ( $exp_num ) {
+        echo '<span class="daifuk-card-badge">' . esc_html( $exp_num ) . '</span>';
+    }
+}
+add_action( 'entry_card_snippet_after', 'daifuk_add_experiment_badge_to_card' );
+
 // カスタムホームページ用テンプレートが使われている時だけ、専用のCSSを読み込む
 function enqueue_custom_home_styles() {
     if ( is_page_template( 'page-home-custom.php' ) ) {
@@ -32,17 +45,17 @@ function get_daifuk_reading_time( $post_id ) {
     return $minutes . '分';
 }
 
-// 🔢 記事タイトルから「#XX」を抽出するか、カスタムフィールドを元に連載番号（Experiment #XX）を生成する関数
+// 🔢 記事タイトルから「#XX」を抽出するか、カスタムフィールドを元に連載番号（Experiment #00X）を生成する関数
 function get_daifuk_experiment_number( $post_id ) {
     // 1. カスタムフィールド 'experiment_number' をチェック
     $num = get_post_meta( $post_id, 'experiment_number', true );
     if ( $num ) {
-        return 'Experiment #' . sprintf( '%02d', intval( $num ) );
+        return 'Experiment #' . sprintf( '%03d', intval( $num ) );
     }
     // 2. 記事タイトル内の #XX または #X パターンを検索
     $title = get_the_title( $post_id );
     if ( preg_match( '/#([0-9]+)/', $title, $matches ) ) {
-        return 'Experiment #' . sprintf( '%02d', intval( $matches[1] ) );
+        return 'Experiment #' . sprintf( '%03d', intval( $matches[1] ) );
     }
     // 3. マッチしない場合は空文字を返す（フォールバック）
     return '';
