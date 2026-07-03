@@ -9,6 +9,49 @@
   line-height: 1.6;
 }
 
+/* ==========================================================================
+   Cocoon Default Elements Reset (Only on Custom Home Template)
+   ========================================================================== */
+.page-template-page-home-custom #sidebar,
+.page-template-page-home-custom .sidebar {
+  display: none !important;
+}
+
+.page-template-page-home-custom #breadcrumbs,
+.page-template-page-home-custom .breadcrumbs,
+.page-template-page-home-custom .breadcrumbs-wrap {
+  display: none !important;
+}
+
+.page-template-page-home-custom .entry-title,
+.page-template-page-home-custom .entry-header,
+.page-template-page-home-custom .post-meta,
+.page-template-page-home-custom .sns-share,
+.page-template-page-home-custom .sns-follow,
+.page-template-page-home-custom .like-button-area {
+  display: none !important;
+}
+
+/* Reset main content width and styles to standard full-width landing */
+.page-template-page-home-custom #main,
+.page-template-page-home-custom .main {
+  width: 100% !important;
+  max-width: 100% !important;
+  float: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.page-template-page-home-custom #content,
+.page-template-page-home-custom #content-in {
+  padding: 0 !important;
+  margin: 0 !important;
+  max-width: 100% !important;
+}
+
 .daifuk-home-layout .main {
   width: 100% !important;
   max-width: 1100px !important;
