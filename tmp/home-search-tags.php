@@ -5,8 +5,8 @@
       
       <!-- ⑦ 検索フォーム -->
       <div class="daifuk-search-block">
-        <span class="section-num" style="margin-bottom: 12px; display: block;">SEARCH</span>
-        <h3 class="daifuk-nav-sub-title">サイト内検索</h3>
+        <span class="section-num" style="margin-bottom: 8px; display: block;">07 / FIND_LOGS</span>
+        <h3 class="daifuk-nav-sub-title">Search</h3>
         <div class="daifuk-search-form-wrap">
           <?php get_search_form(); ?>
         </div>
@@ -14,8 +14,8 @@
 
       <!-- ⑧ カテゴリー一覧 -->
       <div class="daifuk-categories-block">
-        <span class="section-num" style="margin-bottom: 12px; display: block;">CATEGORIES</span>
-        <h3 class="daifuk-nav-sub-title">カテゴリー</h3>
+        <span class="section-num" style="margin-bottom: 8px; display: block;">08 / DIRECTORY</span>
+        <h3 class="daifuk-nav-sub-title">Categories</h3>
         <div class="daifuk-nav-list">
           <?php
           $categories = get_categories( array(
@@ -32,8 +32,8 @@
 
       <!-- ⑨ タグクラウド -->
       <div class="daifuk-tags-block">
-        <span class="section-num" style="margin-bottom: 12px; display: block;">TAGS</span>
-        <h3 class="daifuk-nav-sub-title">人気のタグ</h3>
+        <span class="section-num" style="margin-bottom: 8px; display: block;">09 / TOPICS</span>
+        <h3 class="daifuk-nav-sub-title">Tags</h3>
         <div class="daifuk-nav-tags">
           <?php
           $tags = get_tags( array(

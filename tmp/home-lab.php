@@ -20,13 +20,40 @@ if ( $lab_cat ) {
 }
 
 $lab_query = new WP_Query( $lab_args );
+
+// 最も大きな連載番号を動的に取得する
+$max_exp_args = array(
+    'post_type'      => 'post',
+    'posts_per_page' => 10,
+    'post_status'    => 'publish',
+    'category_name'  => 'ai-lab',
+);
+$max_query = new WP_Query( $max_exp_args );
+$max_num = 1;
+if ( $max_query->have_posts() ) {
+    while ( $max_query->have_posts() ) {
+        $max_query->the_post();
+        $title = get_the_title();
+        if ( preg_match( '/#([0-9]+)/', $title, $matches ) ) {
+            $val = intval( $matches[1] );
+            if ( $val > $max_num ) {
+                $max_num = $val;
+            }
+        }
+    }
+    wp_reset_postdata();
+}
+$formatted_max = sprintf( '#%03d', $max_num );
 ?>
 <section id="lab" class="daifuk-section-gray">
   <div class="daifuk-section-inner">
     <div class="section-header">
       <div class="header-left">
         <span class="section-num">03 / MAIN_SERIES</span>
-        <h2 class="section-title">AI実験ノート</h2>
+        <div style="display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap;">
+          <h2 class="section-title">AI実験ノート</h2>
+          <span class="daifuk-status-pill-mini">現在公開中 Experiment <?php echo esc_html( $formatted_max ); ?></span>
+        </div>
         <p class="section-desc">AIを実際の仕事で使用したプロセス、成功と失敗の完全な実験記録。</p>
       </div>
       <div class="header-right">
