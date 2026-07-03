@@ -1,5 +1,5 @@
 /* ==========================================================================
-   AI実験室 (Custom Home Template) - Dedicated Stylesheet
+   AI実験室 (Custom Home Template) - Dedicated Stylesheet (第2版)
    ========================================================================== */
 
 .daifuk-home-layout {
@@ -7,6 +7,14 @@
   color: #111827 !important;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans JP", sans-serif;
   line-height: 1.6;
+}
+
+.daifuk-home-layout .main {
+  width: 100% !important;
+  max-width: 1240px !important;
+  margin: 0 auto !important;
+  padding: 0 24px !important;
+  float: none !important;
 }
 
 /* ==========================================================================
@@ -52,15 +60,9 @@
   max-width: 100% !important;
 }
 
-.daifuk-home-layout .main {
-  width: 100% !important;
-  max-width: 1100px !important;
-  margin: 0 auto !important;
-  padding: 0 24px !important;
-  float: none !important;
-}
-
-/* Base resets inside the layout to prevent default Cocoon page layouts */
+/* ==========================================================================
+   Section Layouts
+   ========================================================================== */
 .daifuk-home-layout section {
   padding: 100px 0;
   border-bottom: 1px solid #ececec;
@@ -70,13 +72,41 @@
   border-bottom: none;
 }
 
+/* Background Color Rhythm */
+.daifuk-section-white {
+  background-color: #ffffff;
+}
+
+.daifuk-section-gray {
+  background-color: #f9fafb;
+}
+
+.daifuk-section-blue {
+  background-color: #f8fafc;
+}
+
+/* Header layout (Flex space-between for links) */
 .daifuk-home-layout .section-header {
-  margin-bottom: 60px;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+}
+
+.daifuk-home-layout .header-left {
+  flex: 1;
+}
+
+.daifuk-home-layout .header-right {
+  display: flex;
+  gap: 20px;
+  flex-shrink: 0;
 }
 
 .daifuk-home-layout .section-num {
   font-family: "JetBrains Mono", "Consolas", monospace;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: #6366f1;
   letter-spacing: 0.1em;
   margin-bottom: 8px;
@@ -100,7 +130,31 @@
   margin-top: 8px;
 }
 
-/* Grids */
+.daifuk-header-link {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #6366f1;
+  text-decoration: none !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.25s ease;
+}
+
+.daifuk-header-link:hover {
+  color: #4f46e5;
+  transform: translateX(3px);
+}
+
+/* ==========================================================================
+   Grids
+   ========================================================================== */
+.daifuk-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
 .daifuk-grid-3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -119,7 +173,9 @@
   gap: 20px;
 }
 
-/* Buttons */
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
 .daifuk-btn {
   display: inline-flex;
   align-items: center;
@@ -158,11 +214,38 @@
   transform: translateY(-2px);
 }
 
-/* ① HERO Section */
+/* ==========================================================================
+   ① HERO Section (Split Layout)
+   ========================================================================== */
 .daifuk-hero {
-  text-align: center;
+  background-color: #ffffff;
   padding: 120px 0 100px 0;
   border-bottom: 1px solid #ececec;
+}
+
+.daifuk-hero-inner {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+.daifuk-hero-text {
+  flex: 1.1;
+  text-align: left;
+}
+
+.daifuk-hero-media {
+  flex: 0.9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.daifuk-hero-media img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.05);
 }
 
 .daifuk-hero-title {
@@ -175,19 +258,19 @@
 }
 
 .daifuk-hero-subtitle {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   color: #4b5563;
-  max-width: 600px;
-  margin: 0 auto 40px auto;
+  margin-bottom: 40px;
   line-height: 1.6;
 }
 
 .daifuk-hero-ctas {
   display: flex;
-  justify-content: center;
 }
 
-/* Card components */
+/* ==========================================================================
+   Cards
+   ========================================================================== */
 .daifuk-card {
   background-color: #ffffff;
   border: 1px solid #ececec;
@@ -226,23 +309,34 @@
 }
 
 .daifuk-card-body {
-  padding: 24px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   flex: 1;
 }
 
 .daifuk-card-meta {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   color: #9ca3af;
   font-family: "JetBrains Mono", "Consolas", monospace;
   margin-bottom: 12px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.daifuk-card-badge {
+  background-color: #6366f1;
+  color: #ffffff;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 0.68rem;
+  letter-spacing: 0.05em;
 }
 
 .daifuk-card-title {
-  font-size: 1.05rem;
+  font-size: 0.98rem;
   font-weight: 700;
   line-height: 1.45;
   color: #111827;
@@ -257,7 +351,7 @@
 }
 
 .daifuk-card-excerpt {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   color: #4b5563;
   line-height: 1.6;
   display: -webkit-box;
@@ -267,7 +361,9 @@
   margin-bottom: 16px;
 }
 
-/* ③ AI先生の知恵袋 Section */
+/* ==========================================================================
+   ③ AI先生の知恵袋 Section (Vertical border accent)
+   ========================================================================== */
 .daifuk-note-card {
   border: 1px solid #ececec;
   background-color: #ffffff;
@@ -313,7 +409,7 @@
 
 .daifuk-note-card-img-placeholder {
   width: 100%;
-  height: 140px;
+  height: 160px;
   background-color: #f8fafc;
   border: 1px solid #f1f5f9;
   border-radius: 8px;
@@ -326,7 +422,9 @@
   font-family: "JetBrains Mono", "Consolas", monospace;
 }
 
-/* ⑤ Categories Section */
+/* ==========================================================================
+   ⑤ Categories Section
+   ========================================================================== */
 .daifuk-cat-card {
   background-color: #ffffff;
   border: 1px solid #ececec;
@@ -361,13 +459,42 @@
   font-size: 0.9rem;
   font-weight: 700;
   color: #111827;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
-/* ⑥ Profile Section */
+.daifuk-cat-card:hover .daifuk-cat-name {
+  color: #6366f1;
+}
+
+/* ==========================================================================
+   ⑥ Profile Section (Avatar Left, Copy Right)
+   ========================================================================== */
 .daifuk-profile-layout {
   display: flex;
   align-items: center;
   gap: 60px;
+}
+
+.daifuk-profile-avatar-wrap {
+  width: 240px;
+  height: 240px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 4px solid #ffffff;
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.04);
+  overflow: hidden;
+  background-color: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.daifuk-profile-avatar-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .daifuk-profile-text {
@@ -399,42 +526,42 @@
   color: #4b5563;
   font-size: 0.95rem;
   line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+.daifuk-profile-bullets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
   margin-bottom: 32px;
 }
 
-.daifuk-profile-avatar-wrap {
-  width: 200px;
-  height: 200px;
-  flex-shrink: 0;
-  border-radius: 50%;
-  border: 4px solid #ffffff;
-  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.04);
-  overflow: hidden;
-  background-color: #f3f4f6;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.daifuk-profile-bullets span {
+  background-color: #ffffff;
+  border: 1px solid #ececec;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #374151;
 }
 
-.daifuk-profile-avatar-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* ⑦ Contact Section */
+/* ==========================================================================
+   ⑦ Contact Section (Slate Blue accents, service tags)
+   ========================================================================== */
 .daifuk-contact-box {
   border: 1px solid #ececec;
   background-color: #fcfcfc;
   border-radius: 14px;
   padding: 60px 40px;
   text-align: center;
-  max-width: 700px;
+  max-width: 800px;
   margin: 0 auto;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.02);
 }
 
 .daifuk-contact-title {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: 800;
   margin: 0 0 16px 0;
   color: #111827;
@@ -447,13 +574,36 @@
   color: #4b5563;
   font-size: 0.95rem;
   margin: 0 auto 32px auto;
-  max-width: 480px;
+  max-width: 520px;
   line-height: 1.6;
 }
 
+.daifuk-contact-badges {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.daifuk-contact-badges span {
+  background-color: #eff6ff;
+  color: #1e40af;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
 /* ==========================================================================
-   Responsive adjustments
+   Responsive Rules
    ========================================================================== */
+@media screen and (max-width: 1024px) {
+  .daifuk-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media screen and (max-width: 900px) {
   .daifuk-grid-3, .daifuk-grid-2 {
     grid-template-columns: 1fr;
@@ -464,15 +614,43 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .daifuk-profile-layout {
-    flex-direction: column-reverse;
+  .daifuk-hero-inner {
+    flex-direction: column;
+    text-align: center;
     gap: 40px;
+  }
+
+  .daifuk-hero-text {
+    text-align: center;
+  }
+
+  .daifuk-hero-ctas {
+    justify-content: center;
+  }
+
+  .daifuk-profile-layout {
+    flex-direction: column;
     text-align: center;
   }
 
   .daifuk-profile-avatar-wrap {
-    width: 160px;
-    height: 160px;
+    width: 180px;
+    height: 180px;
+  }
+
+  .daifuk-profile-bullets {
+    justify-content: center;
+  }
+
+  .daifuk-home-layout .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .daifuk-home-layout .header-right {
+    width: 100%;
+    justify-content: space-between;
   }
 }
 
@@ -492,5 +670,10 @@
 
   .daifuk-grid-5 {
     grid-template-columns: 1fr;
+  }
+
+  .daifuk-contact-badges span {
+    width: 100%;
+    text-align: center;
   }
 }

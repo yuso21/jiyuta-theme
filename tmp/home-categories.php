@@ -10,11 +10,13 @@ $cats_mapping = array(
     'blog-management' => array('name' => 'ブログ運営', 'icon' => '📝', 'fallback' => 'useful')
 );
 ?>
-<section id="categories">
+<section id="categories" class="daifuk-section-white">
   <div class="section-header">
-    <span class="section-num">04 / DISCOVER_BY_CATEGORY</span>
-    <h2 class="section-title">カテゴリーから探す</h2>
-    <p class="section-desc">実験テーマに合わせた各カテゴリーごとのログ一覧。</p>
+    <div class="header-left">
+      <span class="section-num">05 / CATEGORIES</span>
+      <h2 class="section-title">カテゴリーから探す</h2>
+      <p class="section-desc">実験テーマに合わせた各カテゴリーごとのログ一覧。</p>
+    </div>
   </div>
 
   <div class="daifuk-grid-5">
@@ -28,7 +30,7 @@ $cats_mapping = array(
       ?>
       <a href="<?php echo esc_url( $cat_link ); ?>" class="daifuk-cat-card">
         <div class="daifuk-cat-icon"><?php echo esc_html( $data['icon'] ); ?></div>
-        <span class="daifuk-cat-name"><?php echo esc_html($cat_name); ?></span>
+        <span class="daifuk-cat-name"><?php echo esc_html($cat_name); ?>➔</span>
       </a>
     <?php endforeach; ?>
   </div>

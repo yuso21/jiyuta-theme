@@ -18,3 +18,32 @@ function enqueue_custom_home_styles() {
     }
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_custom_home_styles' );
+
+// ⏱️ 記事の本文文字数から想定読了時間を計算する関数
+function get_daifuk_reading_time( $post_id ) {
+    $post = get_post( $post_id );
+    if ( !$post ) return '1分';
+    $content = strip_shortcodes( $post->post_content );
+    $content = strip_tags( $content );
+    $char_count = mb_strlen( preg_replace( '/\s+/', '', $content ) );
+    // 1分間あたり600文字で読むと仮定して算出
+    $minutes = ceil( $char_count / 600 );
+    if ( $minutes < 1 ) $minutes = 1;
+    return $minutes . '分';
+}
+
+// 🔢 記事タイトルから「#XX」を抽出するか、カスタムフィールドを元に連載番号（Experiment #XX）を生成する関数
+function get_daifuk_experiment_number( $post_id ) {
+    // 1. カスタムフィールド 'experiment_number' をチェック
+    $num = get_post_meta( $post_id, 'experiment_number', true );
+    if ( $num ) {
+        return 'Experiment #' . sprintf( '%02d', intval( $num ) );
+    }
+    // 2. 記事タイトル内の #XX または #X パターンを検索
+    $title = get_the_title( $post_id );
+    if ( preg_match( '/#([0-9]+)/', $title, $matches ) ) {
+        return 'Experiment #' . sprintf( '%02d', intval( $matches[1] ) );
+    }
+    // 3. マッチしない場合は空文字を返す（フォールバック）
+    return '';
+}

@@ -17,23 +17,27 @@ get_header();
     // ① HEROセクション（最上部）
     get_template_part( 'tmp/home-hero' );
 
-    // ② AI実験室（最新記事）
+    // ② 最新記事（NEW - 全カテゴリ最新4件）
+    get_template_part( 'tmp/home-latest' );
+
+    // ③ AI実験室（「AI実験室」カテゴリ最新4件）
     get_template_part( 'tmp/home-lab' );
 
-    // ③ AI先生の知恵袋（図解シリーズ）
+    // ④ AI先生の知恵袋（「AI先生の知恵袋」カテゴリ最新4件）
     get_template_part( 'tmp/home-chiebukuro' );
 
-    // ④ 人気記事（固定記事）
-    get_template_part( 'tmp/home-popular' );
+    // ⑤ おすすめ記事（タグ・固定記事制御）
+    get_template_part( 'tmp/home-recommended' );
 
-    // ⑤ カテゴリー（アイコン付きカード）
+    // ⑥ カテゴリー（5大カテゴリ）
     get_template_part( 'tmp/home-categories' );
 
-    // ⑥ プロフィール（シンプルに整理）
+    // ⑦ プロフィール（左右反転・詳細ボタン）
     get_template_part( 'tmp/home-profile' );
 
-    // ⑦ お問い合わせ（自然な案内）
+    // ⑧ お問い合わせ（プレゼンス強化）
     get_template_part( 'tmp/home-contact' );
+
     ?>
 
   </div><!-- /#main -->
