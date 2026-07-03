@@ -22,29 +22,31 @@ if ( $lab_cat ) {
 $lab_query = new WP_Query( $lab_args );
 ?>
 <section id="lab" class="daifuk-section-gray">
-  <div class="section-header">
-    <div class="header-left">
-      <span class="section-num">03 / MAIN_SERIES</span>
-      <h2 class="section-title">AI実験ノート</h2>
-      <p class="section-desc">AIを実際の仕事で使用したプロセス、成功と失敗の完全な実験記録。</p>
+  <div class="daifuk-section-inner">
+    <div class="section-header">
+      <div class="header-left">
+        <span class="section-num">03 / MAIN_SERIES</span>
+        <h2 class="section-title">AI実験ノート</h2>
+        <p class="section-desc">AIを実際の仕事で使用したプロセス、成功と失敗の完全な実験記録。</p>
+      </div>
+      <div class="header-right">
+        <a href="<?php echo esc_url( $lab_link ); ?>" class="daifuk-header-link">すべて見る ➔</a>
+      </div>
     </div>
-    <div class="header-right">
-      <a href="<?php echo esc_url( $lab_link ); ?>" class="daifuk-header-link">すべて見る ➔</a>
+
+    <div class="daifuk-grid-cocoon">
+      <?php if ( $lab_query->have_posts() ) : while ( $lab_query->have_posts() ) : $lab_query->the_post(); ?>
+        <?php 
+        // Cocoon標準のエントリーカードテンプレートを安全に読み込み
+        get_template_part( 'tmp/entry-card' ); 
+        ?>
+      <?php endwhile; wp_reset_postdata(); else : ?>
+        <p style="grid-column: 1 / -1; text-align: center; color: var(--text-muted);">記事がありません。</p>
+      <?php endif; ?>
     </div>
-  </div>
 
-  <div class="daifuk-grid-cocoon">
-    <?php if ( $lab_query->have_posts() ) : while ( $lab_query->have_posts() ) : $lab_query->the_post(); ?>
-      <?php 
-      // Cocoon標準のエントリーカードテンプレートを安全に読み込み
-      get_template_part( 'tmp/entry-card' ); 
-      ?>
-    <?php endwhile; wp_reset_postdata(); else : ?>
-      <p style="grid-column: 1 / -1; text-align: center; color: var(--text-muted);">記事がありません。</p>
-    <?php endif; ?>
-  </div>
-
-  <div style="text-align: center; margin-top: 50px;">
-    <a href="<?php echo esc_url( $lab_link ); ?>" class="daifuk-btn daifuk-btn-primary">もっと見る ➔</a>
+    <div style="text-align: center; margin-top: 50px;">
+      <a href="<?php echo esc_url( $lab_link ); ?>" class="daifuk-btn daifuk-btn-primary">もっと見る ➔</a>
+    </div>
   </div>
 </section>

@@ -20,29 +20,31 @@ $latest_query = new WP_Query( $latest_args );
 if ( $latest_query->have_posts() ) :
 ?>
 <section id="latest-news" class="daifuk-section-white">
-  <div class="section-header">
-    <div class="header-left">
-      <span class="section-num">04 / OTHER_LOGS</span>
-      <h2 class="section-title">その他の最新記事</h2>
-      <p class="section-desc">AI実験ノート以外のカテゴリー（3DCG、Web制作、プログラミング等）の最新ログ。</p>
+  <div class="daifuk-section-inner">
+    <div class="section-header">
+      <div class="header-left">
+        <span class="section-num">04 / OTHER_LOGS</span>
+        <h2 class="section-title">その他の最新記事</h2>
+        <p class="section-desc">AI実験ノート以外のカテゴリー（3DCG、Web制作、プログラミング等）の最新ログ。</p>
+      </div>
+      <div class="header-right">
+        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="daifuk-header-link">もっと見る ➔</a>
+      </div>
     </div>
-    <div class="header-right">
-      <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="daifuk-header-link">もっと見る ➔</a>
+
+    <div class="daifuk-latest-list">
+      <?php while ( $latest_query->have_posts() ) : $latest_query->the_post(); ?>
+        <a href="<?php the_permalink(); ?>" class="daifuk-latest-item">
+          <span class="daifuk-latest-date"><?php the_time( 'Y.m.d' ); ?></span>
+          <span class="daifuk-latest-title"><?php the_title(); ?></span>
+          <span class="daifuk-latest-arrow">➔</span>
+        </a>
+      <?php endwhile; wp_reset_postdata(); ?>
     </div>
-  </div>
 
-  <div class="daifuk-latest-list">
-    <?php while ( $latest_query->have_posts() ) : $latest_query->the_post(); ?>
-      <a href="<?php the_permalink(); ?>" class="daifuk-latest-item">
-        <span class="daifuk-latest-date"><?php the_time( 'Y.m.d' ); ?></span>
-        <span class="daifuk-latest-title"><?php the_title(); ?></span>
-        <span class="daifuk-latest-arrow">➔</span>
-      </a>
-    <?php endwhile; wp_reset_postdata(); ?>
-  </div>
-
-  <div style="text-align: center; margin-top: 40px;">
-    <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="daifuk-btn daifuk-btn-secondary" style="margin-left:0;">もっと見る ➔</a>
+    <div style="text-align: center; margin-top: 40px;">
+      <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="daifuk-btn daifuk-btn-secondary" style="margin-left:0;">もっと見る ➔</a>
+    </div>
   </div>
 </section>
 <?php endif; ?>

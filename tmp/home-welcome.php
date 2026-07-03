@@ -44,17 +44,19 @@ if ( $first_query->have_posts() ) {
 }
 ?>
 <section class="daifuk-section-white daifuk-welcome-sec">
-  <div class="daifuk-welcome-box">
-    <span class="section-num" style="text-align: center; margin-bottom: 20px;">INTRODUCTION</span>
-    <h2 class="daifuk-welcome-title">AI実験室へようこそ。</h2>
-    <div class="daifuk-welcome-text">
-      <p class="daifuk-lead-text">AIは、本当に仕事で使えるのか。</p>
-      <p>広告デザイナーが生成AIを実際のクリエイティブ業務で使い、<br>その成功も失敗も包み隠さずそのまま公開している実験メディアです。</p>
-      <p>その詳細なドキュメントが、連載シリーズ<strong>「AI実験ノート」</strong>です。</p>
-      <p class="daifuk-status-pill">現在 <span>Experiment <?php echo esc_html( $formatted_max ); ?></span> まで公開中</p>
-    </div>
-    <div style="text-align: center; margin-top: 40px;">
-      <a href="<?php echo esc_url( $first_url ); ?>" class="daifuk-btn daifuk-btn-primary">連載を第1話から読み進める ➔</a>
+  <div class="daifuk-section-inner">
+    <div class="daifuk-welcome-box">
+      <span class="section-num" style="text-align: center; margin-bottom: 20px;">INTRODUCTION</span>
+      <h2 class="daifuk-welcome-title">AI実験室へようこそ。</h2>
+      <div class="daifuk-welcome-text">
+        <p class="daifuk-lead-text">AIは、本当に仕事で使えるのか。</p>
+        <p>広告デザイナーが生成AIを実際のクリエイティブ業務で使い、<br>その成功も失敗も包み隠さずそのまま公開している実験メディアです。</p>
+        <p>その詳細なドキュメントが、連載シリーズ<strong>「AI実験ノート」</strong>です。</p>
+        <p class="daifuk-status-pill">現在 <span>Experiment <?php echo esc_html( $formatted_max ); ?></span> まで公開中</p>
+      </div>
+      <div style="text-align: center; margin-top: 40px;">
+        <a href="<?php echo esc_url( $first_url ); ?>" class="daifuk-btn daifuk-btn-primary">連載を第1話から読み進める ➔</a>
+      </div>
     </div>
   </div>
 </section>

@@ -9,17 +9,16 @@
   line-height: 1.6;
 }
 
-.daifuk-home-layout .main {
-  width: 100% !important;
-  max-width: 1240px !important;
-  margin: 0 auto !important;
-  padding: 0 24px !important;
-  float: none !important;
-}
-
 /* ==========================================================================
    Cocoon Default Elements Reset (Only on Custom Home Template)
    ========================================================================== */
+/* ① ヘッダーのカテゴリメニュー（グローバルナビゲーション）を非表示にする */
+.page-template-page-home-custom #navi,
+.page-template-page-home-custom .navi,
+.page-template-page-home-custom #navi-in {
+  display: none !important;
+}
+
 .page-template-page-home-custom #sidebar,
 .page-template-page-home-custom .sidebar {
   display: none !important;
@@ -40,7 +39,7 @@
   display: none !important;
 }
 
-/* Reset main content width and styles to standard full-width landing */
+/* ② 右側の余白をなくすため、コンテナラッパー（.wrap / #content-in）を画面幅いっぱいに拡張 */
 .page-template-page-home-custom #main,
 .page-template-page-home-custom .main {
   width: 100% !important;
@@ -54,10 +53,24 @@
 }
 
 .page-template-page-home-custom #content,
-.page-template-page-home-custom #content-in {
+.page-template-page-home-custom #content-in,
+.page-template-page-home-custom .wrap {
+  width: 100% !important;
+  max-width: 100% !important;
   padding: 0 !important;
   margin: 0 !important;
-  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* ヒーロー以外の各セクションのインナー要素を1240pxで中央配置にする */
+.daifuk-section-inner {
+  max-width: 1240px !important;
+  margin-right: auto !important;
+  margin-left: auto !important;
+  padding-right: 24px !important;
+  padding-left: 24px !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
 }
 
 /* ==========================================================================
@@ -66,6 +79,8 @@
 .daifuk-home-layout section {
   padding: 100px 0;
   border-bottom: 1px solid #ececec;
+  width: 100% !important;
+  box-sizing: border-box !important;
 }
 
 .daifuk-home-layout section:last-of-type {
@@ -74,15 +89,15 @@
 
 /* Background Color Rhythm */
 .daifuk-section-white {
-  background-color: #ffffff;
+  background-color: #ffffff !important;
 }
 
 .daifuk-section-gray {
-  background-color: #f9fafb;
+  background-color: #f9fafb !important;
 }
 
 .daifuk-section-blue {
-  background-color: #f8fafc;
+  background-color: #f8fafc !important;
 }
 
 /* Header layout (Flex space-between for links) */
@@ -147,54 +162,49 @@
 }
 
 /* ==========================================================================
-   ① HERO Section (Parallax & Fade In)
+   ① HERO Section (Full Screen Background Parallax)
    ========================================================================== */
 .daifuk-hero {
-  background-color: #ffffff;
-  padding: 140px 0 120px 0;
-  border-bottom: 1px solid #ececec;
-}
-
-.daifuk-hero-inner {
-  display: flex;
-  align-items: center;
-  gap: 60px;
-}
-
-.daifuk-hero-text {
-  flex: 1.1;
-  text-align: left;
-}
-
-.daifuk-hero-media {
-  flex: 0.9;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.daifuk-parallax-container {
-  overflow: hidden;
-  border-radius: 16px;
-  width: 100%;
-  aspect-ratio: 4 / 3;
   position: relative;
-  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.05);
+  /* 画像を画面全面に設定 */
+  background-image: url('../images/KV-ai-lab.png') !important;
+  background-attachment: fixed !important;
+  background-position: center !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  min-height: 85vh !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  padding: 0 !important;
+  border-bottom: 1px solid #ececec;
+  overflow: hidden;
 }
 
-#daifuk-hero-img {
-  width: 100%;
-  height: 120%; /* 余白を持たせて動いた際に見切れるのを防ぐ */
-  object-fit: cover;
+/* 視認性を確保するための半透明オーバーレイレイヤー */
+.daifuk-hero-overlay {
   position: absolute;
-  top: -10%;
+  top: 0;
   left: 0;
-  transition: transform 0.1s ease-out;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.78) !important;
+  z-index: 1;
+}
+
+.daifuk-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 100px 24px;
 }
 
 .daifuk-hero-title {
-  font-size: 3rem;
-  font-weight: 800;
+  font-size: 3.2rem;
+  font-weight: 850;
   letter-spacing: -0.03em;
   color: #111827;
   line-height: 1.15;
@@ -203,13 +213,15 @@
 
 .daifuk-hero-subtitle {
   font-size: 1.15rem;
-  color: #4b5563;
+  color: #374151;
   margin-bottom: 40px;
   line-height: 1.6;
 }
 
 .daifuk-hero-ctas {
   display: flex;
+  justify-content: center;
+  gap: 16px;
 }
 
 /* Fade in Animation */
@@ -227,6 +239,50 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* ==========================================================================
+   Buttons Component Override (高優先度でボタン化)
+   ========================================================================== */
+.daifuk-home-layout .daifuk-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 14px 32px !important;
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+  border-radius: 8px !important;
+  text-decoration: none !important;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  cursor: pointer !important;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02), 0 2px 4px -1px rgba(0,0,0,0.02) !important;
+}
+
+.daifuk-home-layout .daifuk-btn-primary {
+  background-color: #111827 !important;
+  color: #ffffff !important;
+  border: 1px solid #111827 !important;
+}
+
+.daifuk-home-layout .daifuk-btn-primary:hover {
+  background-color: #6366f1 !important;
+  border-color: #6366f1 !important;
+  color: #ffffff !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.2) !important;
+}
+
+.daifuk-home-layout .daifuk-btn-secondary {
+  background-color: #ffffff !important;
+  color: #111827 !important;
+  border: 1px solid #d1d5db !important;
+}
+
+.daifuk-home-layout .daifuk-btn-secondary:hover {
+  background-color: #f9fafb !important;
+  color: #111827 !important;
+  border-color: #9ca3af !important;
+  transform: translateY(-2px) !important;
 }
 
 /* ==========================================================================
@@ -286,104 +342,149 @@
 }
 
 /* ==========================================================================
-   ③ AI実験ノート Section (Integration with Cocoon Cards)
+   ③ AI実験ノート Section (Cocoon Cards Bulletproof Override)
    ========================================================================== */
 .daifuk-grid-cocoon {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 24px !important;
+  width: 100% !important;
 }
 
-/* CocoonカードをオーバーライドしてApple風のクリーンデザインへ調律 */
+/* Cocoonのカードデザインが崩れないように徹底リセット＆再定義 */
 .daifuk-grid-cocoon .entry-card-wrap {
+  display: block !important;
   width: 100% !important;
+  max-width: 100% !important;
   margin: 0 !important;
-  background-color: #ffffff !important;
+  float: none !important;
   border: 1px solid #ececec !important;
-  border-radius: 14px !important;
+  border-radius: 12px !important;
+  background-color: #ffffff !important;
   box-shadow: none !important;
   overflow: hidden !important;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  box-sizing: border-box !important;
+  text-decoration: none !important;
+  transition: all 0.25s ease !important;
+  height: 100% !important;
 }
 
 .daifuk-grid-cocoon .entry-card-wrap:hover {
   transform: translateY(-4px) !important;
-  box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.04), 0 8px 10px -6px rgba(15, 23, 42, 0.03) !important;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.05) !important;
   border-color: #9ca3af !important;
 }
 
-.daifuk-grid-cocoon .card-thumb {
+.daifuk-grid-cocoon .entry-card-wrap article {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+  width: 100% !important;
   margin: 0 !important;
-  border-radius: 0 !important;
-  aspect-ratio: 16 / 9;
-  position: relative;
-  overflow: hidden;
+  padding: 0 !important;
+  float: none !important;
+  border: none !important;
+  background: transparent !important;
+  box-sizing: border-box !important;
 }
 
-.daifuk-grid-cocoon .card-thumb-image {
+/* サムネイル画像の調整 */
+.daifuk-grid-cocoon .entry-card-thumb {
+  width: 100% !important;
+  margin: 0 !important;
+  float: none !important;
+  aspect-ratio: 16 / 9 !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.daifuk-grid-cocoon .entry-card-thumb img {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
-  transition: transform 0.5s ease !important;
+  margin: 0 !important;
+  position: static !important;
 }
 
-.daifuk-grid-cocoon .entry-card-wrap:hover .card-thumb-image {
-  transform: scale(1.03) !important;
+/* コンテンツ部分の調整 */
+.daifuk-grid-cocoon .entry-card-content {
+  padding: 16px !important;
+  margin: 0 !important;
+  float: none !important;
+  flex-grow: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  box-sizing: border-box !important;
 }
 
-.daifuk-grid-cocoon .card-content {
-  padding: 20px !important;
-  display: flex;
-  flex-direction: column;
-  height: calc(100% - 150px);
-}
-
+/* タイトルフォントサイズ・高さの固定 */
 .daifuk-grid-cocoon .entry-card-title {
-  font-size: 0.98rem !important;
+  font-size: 0.95rem !important;
   font-weight: 700 !important;
-  line-height: 1.45 !important;
   color: #111827 !important;
+  line-height: 1.5 !important;
   margin: 0 0 10px 0 !important;
-  height: 2.9em;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+  padding: 0 !important;
   border: none !important;
   background: none !important;
-  padding: 0 !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  height: 3em !important;
 }
 
 .daifuk-grid-cocoon .entry-card-wrap:hover .entry-card-title {
   color: #6366f1 !important;
 }
 
+/* 抜粋テキストの高さ固定 */
 .daifuk-grid-cocoon .entry-card-snippet {
   font-size: 0.8rem !important;
   color: #4b5563 !important;
-  line-height: 1.6 !important;
-  height: 3.2em;
-  overflow: hidden;
-  margin-bottom: 12px !important;
+  line-height: 1.5 !important;
+  margin: 0 0 12px 0 !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  height: 3em !important;
 }
 
+/* メタ情報の再定義 */
 .daifuk-grid-cocoon .entry-card-meta {
   margin-top: auto !important;
-  padding-top: 12px;
-  border-top: 1px solid #f1f5f9;
+  padding-top: 10px !important;
+  border-top: 1px solid #f1f5f9 !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  font-size: 0.75rem !important;
+  color: #9ca3af !important;
 }
 
-/* 連載バッジ */
+.daifuk-grid-cocoon .post-date,
+.daifuk-grid-cocoon .post-update,
+.daifuk-grid-cocoon .post-author,
+.daifuk-grid-cocoon .post-comment-count {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  color: #9ca3af !important;
+}
+
+/* 連載バッジの表示位置の定義 */
 .daifuk-card-badge {
-  display: inline-block;
-  background-color: #6366f1;
-  color: #ffffff;
-  padding: 2px 8px;
-  border-radius: 4px;
-  font-weight: 700;
-  font-size: 0.68rem;
-  letter-spacing: 0.05em;
-  margin-top: 8px;
+  display: inline-block !important;
+  background-color: #6366f1 !important;
+  color: #ffffff !important;
+  padding: 2px 8px !important;
+  border-radius: 4px !important;
+  font-weight: 700 !important;
+  font-size: 0.68rem !important;
+  letter-spacing: 0.05em !important;
+  margin-top: 4px !important;
+  align-self: flex-start !important;
 }
 
 /* ==========================================================================
@@ -567,27 +668,27 @@
 }
 
 /* ==========================================================================
-   ⑦⑧⑨ Navigation & Search & Tag Cloud
+   ⑦⑧⑨ Navigation & Search & Tag Cloud (横に並べる 3カラム配置)
    ========================================================================== */
 .daifuk-nav-container {
-  max-width: 800px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 60px;
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important; /* PCでは3等分横並び */
+  gap: 50px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
 }
 
 .daifuk-nav-sub-title {
   font-size: 1.1rem;
-  font-weight: 700;
+  font-weight: 800;
   color: #111827;
-  margin-bottom: 20px;
-  text-align: center;
+  margin-bottom: 24px;
+  text-align: left;
 }
 
+/* ① 検索フォームのインプットデザイン */
 .daifuk-search-form-wrap {
-  max-width: 500px;
-  margin: 0 auto;
+  width: 100% !important;
 }
 
 .daifuk-search-form-wrap .search-form {
@@ -596,18 +697,19 @@
 
 .daifuk-search-form-wrap .search-field {
   flex-grow: 1;
-  border: 1px solid #ececec;
-  border-radius: 8px 0 0 8px;
-  padding: 10px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px 0 0 6px;
+  padding: 10px 14px;
   outline: none;
+  font-size: 0.9rem;
 }
 
 .daifuk-search-form-wrap .search-submit {
   background-color: #111827;
   color: #ffffff;
   border: none;
-  border-radius: 0 8px 8px 0;
-  padding: 0 20px;
+  border-radius: 0 6px 6px 0;
+  padding: 0 18px;
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.2s;
@@ -617,84 +719,76 @@
   background-color: #6366f1;
 }
 
-/* Categories word list */
+/* ② カテゴリーリストの縦並び化（カラムに適した綺麗な配列） */
 .daifuk-categories-block .daifuk-nav-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 16px;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+  align-items: flex-start !important;
 }
 
 .daifuk-categories-block .daifuk-nav-list a {
-  background-color: #ffffff;
-  border: 1px solid #ececec;
-  border-radius: 20px;
-  padding: 8px 18px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #4b5563;
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  font-size: 0.9rem !important;
+  font-weight: 600 !important;
+  color: #4b5563 !important;
   text-decoration: none !important;
-  transition: all 0.25s ease;
+  transition: all 0.2s ease !important;
 }
 
 .daifuk-categories-block .daifuk-nav-list a:hover {
-  color: #6366f1;
-  border-color: #6366f1;
-  transform: translateY(-1px);
+  color: #6366f1 !important;
+  transform: translateX(4px) !important;
 }
 
-/* Tags horizontal word cloud */
+/* ③ タグリスト */
 .daifuk-tags-block .daifuk-nav-tags {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
+  gap: 8px;
 }
 
 .daifuk-tags-block .daifuk-nav-tags a {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 500;
-  color: #9ca3af;
+  color: #6b7280;
   text-decoration: none !important;
   transition: all 0.2s ease;
-  background-color: #f9fafb;
-  border: 1px solid #f1f5f9;
+  background-color: #f3f4f6;
+  border: 1px solid #e5e7eb;
   border-radius: 4px;
   padding: 4px 10px;
 }
 
 .daifuk-tags-block .daifuk-nav-tags a:hover {
-  color: #6366f1;
-  border-color: #e5e7eb;
+  color: #ffffff;
+  background-color: #6366f1;
+  border-color: #6366f1;
 }
 
 /* ==========================================================================
    Responsive Rules
    ========================================================================== */
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1100px) {
   .daifuk-grid-cocoon {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  .daifuk-nav-container {
+    grid-template-columns: 1fr !important; /* タブレット以下では縦に積層 */
+    gap: 40px !important;
   }
 }
 
 @media screen and (max-width: 900px) {
-  .daifuk-grid-cocoon {
-    grid-template-columns: 1fr;
-    gap: 24px;
+  .daifuk-hero-title {
+    font-size: 2.5rem;
   }
   
-  .daifuk-hero-inner {
-    flex-direction: column;
-    text-align: center;
-    gap: 40px;
-  }
-
-  .daifuk-hero-text {
-    text-align: center;
-  }
-
-  .daifuk-hero-ctas {
-    justify-content: center;
+  .daifuk-welcome-title {
+    font-size: 1.8rem;
   }
 
   .daifuk-profile-layout {
@@ -723,9 +817,17 @@
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 600px) {
+  .daifuk-grid-cocoon {
+    grid-template-columns: 1fr !important;
+  }
+
+  .daifuk-hero {
+    min-height: 70vh !important;
+  }
+  
   .daifuk-hero-title {
-    font-size: 2.2rem;
+    font-size: 2rem;
   }
 
   .daifuk-hero-ctas {
@@ -733,8 +835,8 @@
     gap: 12px;
   }
 
-  .daifuk-btn-secondary {
-    margin-left: 0;
+  .daifuk-home-layout .daifuk-btn-secondary {
+    margin-left: 0 !important;
   }
 
   .daifuk-contact-badges span {
