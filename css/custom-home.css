@@ -1,0 +1,453 @@
+/* ==========================================================================
+   AI実験室 (Custom Home Template) - Dedicated Stylesheet
+   ========================================================================== */
+
+.daifuk-home-layout {
+  background-color: #ffffff !important;
+  color: #111827 !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans JP", sans-serif;
+  line-height: 1.6;
+}
+
+.daifuk-home-layout .main {
+  width: 100% !important;
+  max-width: 1100px !important;
+  margin: 0 auto !important;
+  padding: 0 24px !important;
+  float: none !important;
+}
+
+/* Base resets inside the layout to prevent default Cocoon page layouts */
+.daifuk-home-layout section {
+  padding: 100px 0;
+  border-bottom: 1px solid #ececec;
+}
+
+.daifuk-home-layout section:last-of-type {
+  border-bottom: none;
+}
+
+.daifuk-home-layout .section-header {
+  margin-bottom: 60px;
+}
+
+.daifuk-home-layout .section-num {
+  font-family: "JetBrains Mono", "Consolas", monospace;
+  font-size: 0.85rem;
+  color: #6366f1;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.daifuk-home-layout .section-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0;
+  color: #111827;
+  border: none !important;
+  background: none !important;
+  padding: 0 !important;
+}
+
+.daifuk-home-layout .section-desc {
+  font-size: 0.95rem;
+  color: #4b5563;
+  margin-top: 8px;
+}
+
+/* Grids */
+.daifuk-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.daifuk-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+
+.daifuk-grid-5 {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+/* Buttons */
+.daifuk-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 28px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  text-decoration: none !important;
+}
+
+.daifuk-btn-primary {
+  background-color: #111827;
+  color: #ffffff !important;
+  border: 1px solid #111827;
+}
+
+.daifuk-btn-primary:hover {
+  background-color: #6366f1;
+  border-color: #6366f1;
+  transform: translateY(-2px);
+}
+
+.daifuk-btn-secondary {
+  background-color: transparent;
+  color: #111827 !important;
+  border: 1px solid #d1d5db;
+  margin-left: 16px;
+}
+
+.daifuk-btn-secondary:hover {
+  background-color: #f9fafb;
+  border-color: #111827;
+  transform: translateY(-2px);
+}
+
+/* ① HERO Section */
+.daifuk-hero {
+  text-align: center;
+  padding: 120px 0 100px 0;
+  border-bottom: 1px solid #ececec;
+}
+
+.daifuk-hero-title {
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #111827;
+  line-height: 1.15;
+  margin-bottom: 24px;
+}
+
+.daifuk-hero-subtitle {
+  font-size: 1.2rem;
+  color: #4b5563;
+  max-width: 600px;
+  margin: 0 auto 40px auto;
+  line-height: 1.6;
+}
+
+.daifuk-hero-ctas {
+  display: flex;
+  justify-content: center;
+}
+
+/* Card components */
+.daifuk-card {
+  background-color: #ffffff;
+  border: 1px solid #ececec;
+  border-radius: 14px;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+.daifuk-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.04), 0 8px 10px -6px rgba(15, 23, 42, 0.03);
+  border-color: #9ca3af;
+}
+
+.daifuk-card-img-wrapper {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: #f3f4f6;
+  position: relative;
+  overflow: hidden;
+}
+
+.daifuk-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.daifuk-card:hover .daifuk-card-img {
+  transform: scale(1.03);
+}
+
+.daifuk-card-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.daifuk-card-meta {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  font-family: "JetBrains Mono", "Consolas", monospace;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.daifuk-card-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.45;
+  color: #111827;
+  margin: 0 0 10px 0;
+  border: none !important;
+  background: none !important;
+  padding: 0 !important;
+}
+
+.daifuk-card:hover .daifuk-card-title {
+  color: #6366f1;
+}
+
+.daifuk-card-excerpt {
+  font-size: 0.85rem;
+  color: #4b5563;
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+/* ③ AI先生の知恵袋 Section */
+.daifuk-note-card {
+  border: 1px solid #ececec;
+  background-color: #ffffff;
+  border-radius: 14px;
+  padding: 32px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+.daifuk-note-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.04), 0 8px 10px -6px rgba(15, 23, 42, 0.03);
+  border-color: #9ca3af;
+}
+
+.daifuk-note-card-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #111111;
+  border-left: 4px solid #111111;
+  padding: 2px 0 2px 12px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  line-height: 1.3;
+}
+
+.daifuk-note-card:hover .daifuk-note-card-title {
+  border-left-color: #6366f1;
+  color: #6366f1;
+}
+
+.daifuk-note-card-body {
+  font-size: 0.88rem;
+  color: #4b5563;
+  line-height: 1.7;
+}
+
+.daifuk-note-card-img-placeholder {
+  width: 100%;
+  height: 140px;
+  background-color: #f8fafc;
+  border: 1px solid #f1f5f9;
+  border-radius: 8px;
+  margin: 16px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  color: #9ca3af;
+  font-family: "JetBrains Mono", "Consolas", monospace;
+}
+
+/* ⑤ Categories Section */
+.daifuk-cat-card {
+  background-color: #ffffff;
+  border: 1px solid #ececec;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none !important;
+}
+
+.daifuk-cat-card:hover {
+  transform: translateY(-2px);
+  border-color: #111827;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+}
+
+.daifuk-cat-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6366f1;
+  font-size: 1.5rem;
+}
+
+.daifuk-cat-name {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+/* ⑥ Profile Section */
+.daifuk-profile-layout {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+.daifuk-profile-text {
+  flex: 1;
+}
+
+.daifuk-profile-role {
+  font-family: "JetBrains Mono", "Consolas", monospace;
+  color: #6366f1;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.daifuk-profile-title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+  color: #111827;
+  border: none !important;
+  background: none !important;
+  padding: 0 !important;
+}
+
+.daifuk-profile-description {
+  color: #4b5563;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+
+.daifuk-profile-avatar-wrap {
+  width: 200px;
+  height: 200px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 4px solid #ffffff;
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.04);
+  overflow: hidden;
+  background-color: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.daifuk-profile-avatar-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ⑦ Contact Section */
+.daifuk-contact-box {
+  border: 1px solid #ececec;
+  background-color: #fcfcfc;
+  border-radius: 14px;
+  padding: 60px 40px;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.daifuk-contact-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin: 0 0 16px 0;
+  color: #111827;
+  border: none !important;
+  background: none !important;
+  padding: 0 !important;
+}
+
+.daifuk-contact-desc {
+  color: #4b5563;
+  font-size: 0.95rem;
+  margin: 0 auto 32px auto;
+  max-width: 480px;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   Responsive adjustments
+   ========================================================================== */
+@media screen and (max-width: 900px) {
+  .daifuk-grid-3, .daifuk-grid-2 {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  
+  .daifuk-grid-5 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .daifuk-profile-layout {
+    flex-direction: column-reverse;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .daifuk-profile-avatar-wrap {
+    width: 160px;
+    height: 160px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .daifuk-hero-title {
+    font-size: 2.2rem;
+  }
+
+  .daifuk-hero-ctas {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .daifuk-btn-secondary {
+    margin-left: 0;
+  }
+
+  .daifuk-grid-5 {
+    grid-template-columns: 1fr;
+  }
+}
