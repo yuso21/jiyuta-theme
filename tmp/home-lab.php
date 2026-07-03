@@ -34,7 +34,8 @@ if ( $max_query->have_posts() ) {
     while ( $max_query->have_posts() ) {
         $max_query->the_post();
         $title = get_the_title();
-        if ( preg_match( '/#([0-9]+)/', $title, $matches ) ) {
+        $title_decoded = html_entity_decode( $title, ENT_QUOTES, 'UTF-8' );
+        if ( preg_match( '/(?<!&)#([0-9]+)/', $title_decoded, $matches ) ) {
             $val = intval( $matches[1] );
             if ( $val > $max_num ) {
                 $max_num = $val;

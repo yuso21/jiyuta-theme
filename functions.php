@@ -52,9 +52,10 @@ function get_daifuk_experiment_number( $post_id ) {
     if ( $num ) {
         return 'Experiment #' . sprintf( '%03d', intval( $num ) );
     }
-    // 2. 記事タイトル内の #XX または #X パターンを検索
+    // 2. 記事タイトル内の #XX または #X パターンを検索 (HTMLエンティティ&#8221;等の誤検知を防ぐためデコードと否定後方参照を追加)
     $title = get_the_title( $post_id );
-    if ( preg_match( '/#([0-9]+)/', $title, $matches ) ) {
+    $title_decoded = html_entity_decode( $title, ENT_QUOTES, 'UTF-8' );
+    if ( preg_match( '/(?<!&)#([0-9]+)/', $title_decoded, $matches ) ) {
         return 'Experiment #' . sprintf( '%03d', intval( $matches[1] ) );
     }
     // 3. マッチしない場合は空文字を返す（フォールバック）
