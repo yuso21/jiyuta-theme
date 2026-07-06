@@ -169,7 +169,7 @@
   /* 画像を画面全面に設定 */
   background-image: url('../images/KV-ai-lab2.png') !important;
   background-attachment: fixed !important;
-  background-position: center !important;
+  background-position: right bottom !important;
   background-size: cover !important;
   background-repeat: no-repeat !important;
   min-height: 78vh !important;
@@ -837,6 +837,7 @@
 
   .daifuk-hero {
     min-height: 70vh !important;
+    background-position: 40% bottom !important; /* スマホ画面で左側の余白・要素を見せるためのオフセット */
   }
   
   .daifuk-hero-title {
