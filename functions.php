@@ -61,3 +61,20 @@ function get_daifuk_experiment_number( $post_id ) {
     // 3. マッチしない場合は空文字を返す（フォールバック）
     return '';
 }
+
+// 🌐 カスタムOGP画像の適用（ホームページのみ）
+function daifuk_custom_ogp_image( $ogp_image ) {
+    if ( is_front_page() || is_page_template( 'page-home-custom.php' ) ) {
+        return get_stylesheet_directory_uri() . '/images/jiyuta_OGP.png';
+    }
+    return $ogp_image;
+}
+add_filter( 'ogp_card_ogp_image', 'daifuk_custom_ogp_image' );
+
+// 🎯 ファビコン（Favicon）の強制適用
+function daifuk_custom_favicon() {
+    $favicon_url = get_stylesheet_directory_uri() . '/images/jiyuta_fabicon.png';
+    echo '<link rel="icon" href="' . esc_url( $favicon_url ) . '" type="image/png" />' . "\n";
+    echo '<link rel="apple-touch-icon" href="' . esc_url( $favicon_url ) . '" />' . "\n";
+}
+add_action( 'wp_head', 'daifuk_custom_favicon', 1 );

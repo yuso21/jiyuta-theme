@@ -167,7 +167,7 @@
 .daifuk-hero {
   position: relative;
   /* 画像を画面全面に設定 */
-  background-image: url('../images/KV-ai-lab.png') !important;
+  background-image: url('../images/KV-ai-lab2.png') !important;
   background-attachment: fixed !important;
   background-position: center !important;
   background-size: cover !important;
@@ -184,13 +184,7 @@
 
 /* 視認性を確保するための半透明オーバーレイレイヤー */
 .daifuk-hero-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(255, 255, 255, 0.78) !important;
-  z-index: 1;
+  display: none !important; /* 背景が白ベースのため不要に */
 }
 
 .daifuk-hero-content {
@@ -209,6 +203,13 @@
   color: #111827;
   line-height: 1.15;
   margin-bottom: 24px;
+}
+
+/* キャッチコピーの「AI」の文字を目立たせる強調スタイル */
+.daifuk-highlight {
+  color: #3b82f6 !important; /* 鮮やかなブルー */
+  font-size: 1.15em !important; /* 少し大きく */
+  font-weight: 900 !important;
 }
 
 .daifuk-hero-subtitle {

@@ -22,7 +22,7 @@ if ( $first_query->have_posts() ) {
 <section class="daifuk-hero">
   <div class="daifuk-hero-overlay"></div>
   <div class="daifuk-hero-content daifuk-fade-in">
-    <h1 class="daifuk-hero-title">AIを、仕事の武器に。</h1>
+    <h1 class="daifuk-hero-title"><span class="daifuk-highlight">AI</span>を、仕事の武器に。</h1>
     <p class="daifuk-hero-subtitle">デザイナーが実際に試したAI活用・Web制作・デザインの実験記録。</p>
     <div class="daifuk-hero-ctas">
       <a href="#lab" class="daifuk-btn daifuk-btn-primary">最新の実験を見る</a>
