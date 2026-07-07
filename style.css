@@ -566,7 +566,36 @@ body.public-page {
     border-left-width: 3px;
   }
 }
+/* ==========================================================================
+   記事用の独自カスタムコンポーネント (画像ショット・ボタンなど)
+   ========================================================================== */
+.article-app-shot {
+  margin: 28px 0 20px;
+}
 
+.article-app-shot img {
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+  display: block;
+}
 
+.article-button-wrap {
+  text-align: center;
+  margin: 24px 0 40px;
+}
 
+.article-button {
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: 999px;
+  background: #2563eb;
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+}
 
+.article-button:hover {
+  opacity: 0.88;
+  color: #fff;
+}
