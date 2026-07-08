@@ -35,7 +35,7 @@ if ( $max_query->have_posts() ) {
         $max_query->the_post();
         $title = get_the_title();
         $title_decoded = html_entity_decode( $title, ENT_QUOTES, 'UTF-8' );
-        if ( preg_match( '/(?<!&)#([0-9]+)/', $title_decoded, $matches ) ) {
+        if ( preg_match( '/(?<!&)(?:#|Vol\.?\s*)([0-9]+)/i', $title_decoded, $matches ) ) {
             $val = intval( $matches[1] );
             if ( $val > $max_num ) {
                 $max_num = $val;
@@ -56,9 +56,6 @@ $formatted_max = sprintf( '#%03d', $max_num );
           <span class="daifuk-status-pill-mini">現在公開中 Experiment <?php echo esc_html( $formatted_max ); ?></span>
         </div>
         <p class="section-desc">AIを実際の仕事で使用したプロセス、成功と失敗の完全な実験記録。</p>
-      </div>
-      <div class="header-right">
-        <a href="<?php echo esc_url( $lab_link ); ?>" class="daifuk-header-link">すべて見る ➔</a>
       </div>
     </div>
 
