@@ -78,3 +78,23 @@ function daifuk_custom_favicon() {
     echo '<link rel="apple-touch-icon" href="' . esc_url( $favicon_url ) . '" />' . "\n";
 }
 add_action( 'wp_head', 'daifuk_custom_favicon', 1 );
+
+// 🎯 REST APIでYoast SEOおよびRank Mathのメタキーを更新可能にする設定
+function daifuk_register_seo_meta_in_rest() {
+    $meta_keys = [
+        '_yoast_wpseo_title',
+        '_yoast_wpseo_metadesc',
+        '_yoast_wpseo_focuskw',
+        'rank_math_title',
+        'rank_math_description',
+        'rank_math_focus_keyword'
+    ];
+    foreach ( $meta_keys as $key ) {
+        register_post_meta( 'post', $key, array(
+            'show_in_rest' => true,
+            'single'       => true,
+            'type'         => 'string',
+        ) );
+    }
+}
+add_action( 'rest_api_init', 'daifuk_register_seo_meta_in_rest' );
