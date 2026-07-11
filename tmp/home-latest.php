@@ -16,6 +16,12 @@ $latest_args = array(
 );
 $latest_query = new WP_Query( $latest_args );
 
+// 除外カテゴリ付きのブログアーカイブURLを動的に生成
+$latest_link = home_url( '/' );
+if ( $exclude_cat ) {
+    $latest_link = add_query_arg( 'cat', '-' . $exclude_cat, home_url( '/' ) );
+}
+
 // もし記事が全くない場合はセクションごと表示しない
 if ( $latest_query->have_posts() ) :
 ?>
@@ -26,9 +32,6 @@ if ( $latest_query->have_posts() ) :
         <span class="section-num">04 / OTHER_LOGS</span>
         <h2 class="section-title">その他の最新記事</h2>
         <p class="section-desc">AI実験ノート以外のカテゴリー（3DCG、Web制作、プログラミング等）の最新ログ。</p>
-      </div>
-      <div class="header-right">
-        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="daifuk-header-link">もっと見る ➔</a>
       </div>
     </div>
 
@@ -43,7 +46,7 @@ if ( $latest_query->have_posts() ) :
     </div>
 
     <div style="text-align: center; margin-top: 40px;">
-      <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="daifuk-btn daifuk-btn-secondary" style="margin-left:0;">もっと見る ➔</a>
+      <a href="<?php echo esc_url( $latest_link ); ?>" class="daifuk-btn daifuk-btn-secondary" style="margin-left:0;">もっと見る ➔</a>
     </div>
   </div>
 </section>
