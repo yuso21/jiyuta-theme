@@ -87,7 +87,9 @@ function daifuk_register_seo_meta_in_rest() {
         '_yoast_wpseo_focuskw',
         'rank_math_title',
         'rank_math_description',
-        'rank_math_focus_keyword'
+        'rank_math_focus_keyword',
+        'the_page_seo_title',
+        'the_page_meta_description'
     ];
     foreach ( $meta_keys as $key ) {
         register_post_meta( 'post', $key, array(
