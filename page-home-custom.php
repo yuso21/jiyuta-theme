@@ -17,16 +17,13 @@ get_header();
     // ① HEROセクション（最上部 - パララックス対応）
     get_template_part( 'tmp/home-hero' );
 
-    // ② ブランド紹介セクション（AI実験室へようこそ）
-    get_template_part( 'tmp/home-welcome' );
-
-    // ③ 3つのシリーズ案内
+    // ② 3つのシリーズ案内
     get_template_part( 'tmp/home-series-guide' );
 
-    // ④ AI実験ノート
+    // ③ AI実験ノート
     get_template_part( 'tmp/home-lab' );
 
-    // ⑤ AIと働く
+    // ④ AIと働く
     get_template_part( 'tmp/home-series', null, array(
       'slug'        => 'ai-work',
       'section_id'  => 'ai-work',
@@ -36,7 +33,7 @@ get_header();
       'tone'        => 'white',
     ) );
 
-    // ⑥ デザインとAI
+    // ⑤ デザインとAI
     get_template_part( 'tmp/home-series', null, array(
       'slug'        => 'design-ai',
       'section_id'  => 'design-ai',
@@ -46,16 +43,16 @@ get_header();
       'tone'        => 'gray',
     ) );
 
-    // ⑦ プロフィール（左右分割）
+    // ⑥ プロフィール（左右分割）
     get_template_part( 'tmp/home-profile' );
 
-    // ⑧ お問い合わせ（案内バッジ付き）
+    // ⑦ お問い合わせ（案内バッジ付き）
     get_template_part( 'tmp/home-contact' );
 
-    // ⑨ 最近の更新
+    // ⑧ 最近の更新
     get_template_part( 'tmp/home-latest' );
 
-    // ⑩ 検索・カテゴリー・タグ（最下部フッターナビゲーション）
+    // ⑨ 検索・カテゴリー・タグ（最下部フッターナビゲーション）
     get_template_part( 'tmp/home-search-tags' );
 
 
