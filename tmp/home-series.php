@@ -8,7 +8,7 @@ if ( ! $category ) return;
 
 $query = new WP_Query( array(
     'post_type'      => 'post',
-    'posts_per_page' => 3,
+    'posts_per_page' => 4,
     'post_status'    => 'publish',
     'cat'            => $category->term_id,
 ) );
