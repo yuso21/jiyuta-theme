@@ -48,18 +48,11 @@ function get_daifuk_reading_time( $post_id ) {
 // 🔢 記事タイトルから「#XX」を抽出するか、カスタムフィールドを元に連載番号（Experiment #00X）を生成する関数
 function get_daifuk_experiment_number( $post_id ) {
     // 1. カスタムフィールド 'experiment_number' をチェック
-    $num = get_post_meta( $post_id, 'experiment_number', true );
-    if ( $num ) {
-        return 'Experiment #' . sprintf( '%03d', intval( $num ) );
-    }
     // 2. 記事タイトル内の #XX または #X パターンを検索 (HTMLエンティティ&#8221;等の誤検知を防ぐためデコードと否定後方参照を追加)
-    $title = get_the_title( $post_id );
-    $title_decoded = html_entity_decode( $title, ENT_QUOTES, 'UTF-8' );
-    if ( preg_match( '/(?<!&)(?:#|Vol\.?\s*)([0-9]+)/i', $title_decoded, $matches ) ) {
-        return 'Experiment #' . sprintf( '%03d', intval( $matches[1] ) );
-    }
     // 3. マッチしない場合は空文字を返す（フォールバック）
-    return '';
+    // 番号の判定は、シリーズ機能の共通処理（メタ → スラッグ → タイトル）に集約する。
+    $number = function_exists( 'daifuk_get_series_number' ) ? daifuk_get_series_number( $post_id ) : null;
+    return null === $number ? '' : 'Experiment #' . sprintf( '%03d', $number );
 }
 
 // 🌐 カスタムOGP画像の適用（ホームページのみ）
@@ -103,3 +96,7 @@ function daifuk_register_seo_meta_in_rest() {
     }
 }
 add_action( 'rest_api_init', 'daifuk_register_seo_meta_in_rest' );
+
+require_once get_stylesheet_directory() . '/inc/series-core.php';
+require_once get_stylesheet_directory() . '/inc/series-navigation.php';
+require_once get_stylesheet_directory() . '/inc/series-archive.php';

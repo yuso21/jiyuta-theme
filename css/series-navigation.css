@@ -1,0 +1,15 @@
+.daifuk-series-navigation { margin: 56px 0 32px; padding: 32px; background: #fff; border: 1px solid var(--border-color); border-radius: var(--radius-lg); box-shadow: var(--card-shadow); }
+.daifuk-series-navigation__header { display: flex; align-items: baseline; gap: 12px; margin-bottom: 24px; }
+.daifuk-series-navigation__eyebrow, .daifuk-series-card-number { color: var(--primary-color); font-size: .78rem; font-weight: 700; letter-spacing: .06em; }
+.daifuk-series-navigation__title { color: var(--text-main); font-size: 1.15rem; font-weight: 700; }
+.daifuk-series-navigation__links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.daifuk-series-navigation__link { display: flex; min-height: 112px; flex-direction: column; justify-content: space-between; padding: 20px; background: #fff; border: 1px solid var(--border-color); border-radius: var(--radius-md); color: var(--text-main); text-decoration: none; transition: var(--transition-smooth); }
+.daifuk-series-navigation__link:hover { border-color: var(--primary-color); box-shadow: 0 8px 20px rgba(99, 102, 241, .12); transform: translateY(-2px); }
+.daifuk-series-navigation__link--next { text-align: right; }
+.daifuk-series-navigation__direction { color: var(--primary-color); font-size: .82rem; font-weight: 700; }
+.daifuk-series-navigation__post-title { margin-top: 12px; font-weight: 700; line-height: 1.6; }
+.daifuk-series-navigation__archive-link { display: inline-block; margin-top: 24px; color: var(--primary-color); font-size: .9rem; font-weight: 700; text-decoration: none; }
+.daifuk-series-navigation__archive-link:hover { text-decoration: underline; }
+.category .daifuk-series-archive-description { margin: 0 0 32px; color: var(--text-muted); font-size: 1rem; line-height: 1.8; }
+.category .daifuk-series-card-number { display: inline-block; margin-top: 10px; }
+@media screen and (max-width: 767px) { .daifuk-series-navigation { margin-top: 40px; padding: 24px 20px; } .daifuk-series-navigation__header, .daifuk-series-navigation__links { display: flex; flex-direction: column; } .daifuk-series-navigation__header { align-items: flex-start; gap: 6px; } .daifuk-series-navigation__link--next { text-align: left; } }
