@@ -20,19 +20,42 @@ get_header();
     // ② ブランド紹介セクション（AI実験室へようこそ）
     get_template_part( 'tmp/home-welcome' );
 
-    // ③ AI実験ノート（カテゴリ最新4件 ＋ バッジ）
+    // ③ 3つのシリーズ案内
+    get_template_part( 'tmp/home-series-guide' );
+
+    // ④ AI実験ノート
     get_template_part( 'tmp/home-lab' );
 
-    // ④ 最新記事（他カテゴリの最新5件テキストフィード）
-    get_template_part( 'tmp/home-latest' );
+    // ⑤ AIと働く
+    get_template_part( 'tmp/home-series', null, array(
+      'slug'        => 'ai-work',
+      'section_id'  => 'ai-work',
+      'section_num' => '04 / SERIES',
+      'title'       => 'AIと働く',
+      'description' => 'AI時代の働き方や、人との関わりを綴るエッセイシリーズ。',
+      'tone'        => 'white',
+    ) );
 
-    // ⑤ プロフィール（左右分割）
+    // ⑥ デザインとAI
+    get_template_part( 'tmp/home-series', null, array(
+      'slug'        => 'design-ai',
+      'section_id'  => 'design-ai',
+      'section_num' => '05 / SERIES',
+      'title'       => 'デザインとAI',
+      'description' => 'デザインの視点から、AIとの付き合い方を考えるシリーズ。',
+      'tone'        => 'gray',
+    ) );
+
+    // ⑦ プロフィール（左右分割）
     get_template_part( 'tmp/home-profile' );
 
-    // ⑥ お問い合わせ（案内バッジ付き）
+    // ⑧ お問い合わせ（案内バッジ付き）
     get_template_part( 'tmp/home-contact' );
 
-    // ⑦⑧⑨ 検索・カテゴリー・タグ（最下部フッターナビゲーション）
+    // ⑨ 最近の更新
+    get_template_part( 'tmp/home-latest' );
+
+    // ⑩ 検索・カテゴリー・タグ（最下部フッターナビゲーション）
     get_template_part( 'tmp/home-search-tags' );
 
 

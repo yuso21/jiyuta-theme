@@ -553,6 +553,69 @@
   transform: translateX(4px);
 }
 
+/* Series-first HOME navigation */
+.daifuk-series-guide__list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.daifuk-series-guide__item {
+  display: flex;
+  min-height: 184px;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px;
+  background: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  color: var(--text-main);
+  text-decoration: none;
+  transition: var(--transition-smooth);
+}
+
+.daifuk-series-guide__item:hover {
+  border-color: var(--primary-color);
+  box-shadow: var(--card-shadow-hover);
+  transform: translateY(-3px);
+}
+
+.daifuk-series-guide__title {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.daifuk-series-guide__description {
+  margin: 14px 0;
+  color: var(--text-muted);
+  font-size: .9rem;
+  line-height: 1.7;
+}
+
+.daifuk-series-guide__link {
+  color: var(--primary-color);
+  font-size: .82rem;
+  font-weight: 700;
+}
+
+.daifuk-home-series__title-row {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.daifuk-home-series__footer {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.daifuk-home-series__empty {
+  grid-column: 1 / -1;
+  color: var(--text-muted);
+  text-align: center;
+}
+
 /* ==========================================================================
    ⑤ Profile Section (Avatar Left, Copy Right)
    ========================================================================== */
@@ -868,5 +931,20 @@
   .daifuk-contact-badges span {
     width: 100%;
     text-align: center;
+  }
+
+  .daifuk-series-guide__list {
+    grid-template-columns: 1fr;
+  }
+
+  .daifuk-series-guide__item {
+    min-height: 0;
+    padding: 20px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .daifuk-series-guide__list {
+    grid-template-columns: 1fr;
   }
 }

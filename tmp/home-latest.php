@@ -1,26 +1,14 @@
 <?php
 if ( !defined( 'ABSPATH' ) ) exit;
 
-// AI実験ノートのカテゴリIDを取得して除外する
-$lab_cat = get_category_by_slug( 'ai-lab' );
-if ( !$lab_cat ) {
-    $lab_cat = get_category_by_slug( 'ai-jikken-note' );
-}
-$exclude_cat = $lab_cat ? $lab_cat->term_id : 0;
-
 $latest_args = array(
-    'post_type'        => 'post',
-    'posts_per_page'   => TOP_LATEST_COUNT,
-    'post_status'      => 'publish',
-    'category__not_in' => array( $exclude_cat ),
+    'post_type'      => 'post',
+    'posts_per_page' => TOP_LATEST_COUNT,
+    'post_status'    => 'publish',
 );
 $latest_query = new WP_Query( $latest_args );
 
-// 除外カテゴリ付きのブログアーカイブURLを動的に生成
 $latest_link = home_url( '/' );
-if ( $exclude_cat ) {
-    $latest_link = add_query_arg( 'cat', '-' . $exclude_cat, home_url( '/' ) );
-}
 
 // もし記事が全くない場合はセクションごと表示しない
 if ( $latest_query->have_posts() ) :
@@ -29,9 +17,9 @@ if ( $latest_query->have_posts() ) :
   <div class="daifuk-section-inner">
     <div class="section-header">
       <div class="header-left">
-        <span class="section-num">04 / OTHER_LOGS</span>
-        <h2 class="section-title">その他の最新記事</h2>
-        <p class="section-desc">AI実験ノート以外のカテゴリー（3DCG、Web制作、プログラミング等）の最新ログ。</p>
+        <span class="section-num">06 / RECENT_UPDATES</span>
+        <h2 class="section-title">最近の更新</h2>
+        <p class="section-desc">AI実験室の新しい記録と、最近公開した記事。</p>
       </div>
     </div>
 
