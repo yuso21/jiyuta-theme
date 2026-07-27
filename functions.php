@@ -14,6 +14,29 @@ function daifuk_allow_markdown_uploads( $mimes ) {
 }
 add_filter( 'upload_mimes', 'daifuk_allow_markdown_uploads' );
 
+// Markdownは nginx の静的配信では文字コードが付かないため、UTF-8を明示して配布する。
+function daifuk_serve_markdown_download() {
+    if ( ! isset( $_GET['download_markdown'] ) ) {
+        return;
+    }
+
+    $attachment_id = absint( $_GET['download_markdown'] );
+    $file_path     = get_attached_file( $attachment_id );
+
+    if ( ! $attachment_id || ! $file_path || ! is_readable( $file_path ) || 'md' !== pathinfo( $file_path, PATHINFO_EXTENSION ) ) {
+        status_header( 404 );
+        exit;
+    }
+
+    nocache_headers();
+    header( 'Content-Type: text/markdown; charset=UTF-8' );
+    header( 'Content-Disposition: attachment; filename="' . rawurlencode( basename( $file_path ) ) . '"' );
+    header( 'Content-Length: ' . filesize( $file_path ) );
+    readfile( $file_path );
+    exit;
+}
+add_action( 'template_redirect', 'daifuk_serve_markdown_download' );
+
 // 表示制御用の定数定義
 define( 'TOP_EXPERIMENT_COUNT', 4 );
 define( 'TOP_LATEST_COUNT', 5 );
