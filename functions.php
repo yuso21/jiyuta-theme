@@ -6,6 +6,13 @@ add_editor_style();
 
 //以下に子テーマ用の関数を書く
 
+// 配布用チェックリストなどのMarkdownファイルをメディアへアップロードできるようにする。
+function daifuk_allow_markdown_uploads( $mimes ) {
+    $mimes['md'] = 'text/markdown';
+    return $mimes;
+}
+add_filter( 'upload_mimes', 'daifuk_allow_markdown_uploads' );
+
 // 表示制御用の定数定義
 define( 'TOP_EXPERIMENT_COUNT', 4 );
 define( 'TOP_LATEST_COUNT', 5 );
