@@ -8,7 +8,8 @@ add_editor_style();
 
 // 配布用チェックリストなどのMarkdownファイルをメディアへアップロードできるようにする。
 function daifuk_allow_markdown_uploads( $mimes ) {
-    $mimes['md'] = 'text/markdown';
+    // WordPress/PHP identifies Markdown files as text/plain during upload.
+    $mimes['md'] = 'text/plain';
     return $mimes;
 }
 add_filter( 'upload_mimes', 'daifuk_allow_markdown_uploads' );
