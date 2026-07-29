@@ -1,0 +1,46 @@
+.daifuk-prompt-copy {
+  position: relative;
+  margin: 1.5em 0;
+}
+
+.daifuk-prompt-copy .wp-block-code {
+  margin: 0;
+  padding-top: 3.75rem;
+}
+
+.daifuk-prompt-copy .wp-block-code code,
+.daifuk-prompt-copy .wp-block-code code * {
+  color: #f7f7f5 !important;
+}
+
+.daifuk-prompt-copy-button {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 2;
+  min-width: 5.5em;
+  padding: 0.45em 0.85em;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font: inherit;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  cursor: pointer;
+}
+
+.daifuk-prompt-copy-button:hover,
+.daifuk-prompt-copy-button:focus-visible {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.daifuk-prompt-copy-button:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+.daifuk-prompt-copy-button.is-copied {
+  border-color: #68c48a;
+  background: #247a48;
+}

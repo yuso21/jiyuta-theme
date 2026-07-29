@@ -63,6 +63,28 @@ function enqueue_custom_home_styles() {
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_custom_home_styles' );
 
+// 記事内のプロンプトを読みやすく表示し、ワンクリックでコピーできるようにする。
+function daifuk_enqueue_prompt_copy_assets() {
+    if ( ! is_singular( 'post' ) ) {
+        return;
+    }
+
+    wp_enqueue_style(
+        'daifuk-prompt-copy',
+        get_stylesheet_directory_uri() . '/css/prompt-copy.css',
+        array(),
+        '1.0.0'
+    );
+    wp_enqueue_script(
+        'daifuk-prompt-copy',
+        get_stylesheet_directory_uri() . '/js/prompt-copy.js',
+        array(),
+        '1.0.0',
+        true
+    );
+}
+add_action( 'wp_enqueue_scripts', 'daifuk_enqueue_prompt_copy_assets' );
+
 // ⏱️ 記事の本文文字数から想定読了時間を計算する関数
 function get_daifuk_reading_time( $post_id ) {
     $post = get_post( $post_id );
