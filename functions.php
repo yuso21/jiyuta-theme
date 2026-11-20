@@ -164,6 +164,16 @@ function daifuk_normalize_robots_sitemap( $output, $public ) {
 }
 add_filter( 'robots_txt', 'daifuk_normalize_robots_sitemap', 999, 2 );
 
+// XML Sitemap Generatorがdo_robotsで同じURLとHTML版を後から追記する処理を止める。
+function daifuk_disable_sitemap_plugin_robots_append() {
+    remove_action(
+        'do_robots',
+        array( 'GoogleSitemapGeneratorLoader', 'call_do_robots' ),
+        100
+    );
+}
+add_action( 'init', 'daifuk_disable_sitemap_plugin_robots_append', 1 );
+
 require_once get_stylesheet_directory() . '/inc/series-core.php';
 require_once get_stylesheet_directory() . '/inc/series-navigation.php';
 require_once get_stylesheet_directory() . '/inc/series-archive.php';
