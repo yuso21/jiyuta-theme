@@ -150,6 +150,20 @@ function daifuk_register_seo_meta_in_rest() {
 }
 add_action( 'rest_api_init', 'daifuk_register_seo_meta_in_rest' );
 
+// robots.txtでは、実際に利用しているXMLサイトマップだけを案内する。
+// WordPress標準の空サイトマップやHTML版サイトマップが重複して出ないように整える。
+function daifuk_normalize_robots_sitemap( $output, $public ) {
+    if ( ! $public ) {
+        return $output;
+    }
+
+    $output = preg_replace( '/^\s*Sitemap:\s*.*$/mi', '', $output );
+    $output = trim( preg_replace( "/\n{3,}/", "\n\n", $output ) );
+
+    return $output . "\n\nSitemap: " . home_url( '/sitemap.xml' ) . "\n";
+}
+add_filter( 'robots_txt', 'daifuk_normalize_robots_sitemap', 999, 2 );
+
 require_once get_stylesheet_directory() . '/inc/series-core.php';
 require_once get_stylesheet_directory() . '/inc/series-navigation.php';
 require_once get_stylesheet_directory() . '/inc/series-archive.php';
