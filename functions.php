@@ -172,7 +172,7 @@ function daifuk_disable_sitemap_plugin_robots_append() {
         100
     );
 }
-add_action( 'init', 'daifuk_disable_sitemap_plugin_robots_append', 1 );
+add_action( 'init', 'daifuk_disable_sitemap_plugin_robots_append', 20 );
 
 require_once get_stylesheet_directory() . '/inc/series-core.php';
 require_once get_stylesheet_directory() . '/inc/series-navigation.php';
